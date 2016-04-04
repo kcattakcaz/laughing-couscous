@@ -6,6 +6,8 @@ class ShowController {
 
     def mainPage() {}
 
+    def newShowForm() {}
+
     def addShow(){
         def show = new Show(params)
 
