@@ -10,7 +10,7 @@ class ShowController {
         def show = new Show(params)
 
         if (show.save()) {
-            redirect(action:"mainPage")
+            redirect(action:"index")
         } else {
             render(view:"newShowForm",model:[show:show])
         }
@@ -19,7 +19,7 @@ class ShowController {
     def deleteShow(){
         def show = Show.get(params.id)
         show.delete()
-        redirect(action:"mainPage")
+        redirect(action:"index")
     }
 
     def updateShow(){

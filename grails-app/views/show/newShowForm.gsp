@@ -17,7 +17,7 @@
         Show Description:<g:textArea name="description" value="${fieldValue(bean: show, field: 'description')}"/><br/>
         Tags:<g:textField name="tags" value="${fieldValue(bean: show, field: 'tags')}"/>
         <g:submitButton name="Submit"/>
-        <g:submitButton name="Cancel" action="index"/>
+        <g:actionButton name="Cancel" action="index"/>
     </g:form>
 </body>
 </html>
