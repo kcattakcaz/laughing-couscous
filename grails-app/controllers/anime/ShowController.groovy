@@ -9,6 +9,7 @@ class ShowController {
     def addShow(){
         def show = new Show(params)
 
+
         if (show.save()) {
             redirect(action:"index")
         } else {
@@ -24,5 +25,9 @@ class ShowController {
 
     def updateShow(){
 
+    }
+
+    def homepage(){
+        redirect(actio:"index")
     }
 }
