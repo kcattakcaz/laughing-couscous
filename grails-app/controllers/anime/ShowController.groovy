@@ -4,8 +4,6 @@ class ShowController {
 
     def index() {}
 
-    def mainPage() {}
-
     def newShowForm() {}
 
     def addShow(){
