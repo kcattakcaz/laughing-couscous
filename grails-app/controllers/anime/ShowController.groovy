@@ -28,6 +28,6 @@ class ShowController {
     }
 
     def homepage(){
-        redirect(actio:"index")
+        redirect(action: "index")
     }
 }
