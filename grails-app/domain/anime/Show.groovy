@@ -14,8 +14,9 @@ class Show {
     Boolean approved
 
     static mapping = {
-        description type: "mediumtext"
+        description column: 'description', sqlType: 'mediumtext'
     }
 
-    static belongsTo = [tag:Tag]
+    static hasMany = [tags:Tag]
+    static belongsTo = Tag
 }

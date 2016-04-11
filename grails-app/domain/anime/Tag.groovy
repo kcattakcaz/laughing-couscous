@@ -8,5 +8,6 @@ class Tag {
 
     String value;
 
-    static hasMany = [show:Show]
+    static hasMany = [shows:Show]
+
 }
