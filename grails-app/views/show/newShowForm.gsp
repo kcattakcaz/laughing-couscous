@@ -13,8 +13,13 @@
 
 <body>
     <g:form action="addShow">
-        Show Name:<g:textField name="showName" value="${fieldValue(bean: show, field: 'showName')}"/><br/>
+        Show Name:<g:textField name="name" value="${fieldValue(bean: show, field: 'name')}"/><br/>
+        Start Date:<g:datePicker name="start_year" value="${new Date()}"
+                    noSelection="['':'-Choose-']" precision="year"/><br/>
+        End Date:<g:datePicker name="end_year" value="${new Date()}"
+                    noSelection="['':'-Choose-']" precision="year"/><br/>
         Show Description:<g:textArea name="description" value="${fieldValue(bean: show, field: 'description')}"/><br/>
+        Number of Episodes:<g:textField name="num_episodes" value="${fieldValue(bean: show, field: 'num_episodes')}"/><br/>
         Tags:<g:textField name="tags" value="${fieldValue(bean: show, field: 'tags')}"/><br/>
         <g:submitButton name="Submit"/>
        <g:actionSubmit value="Cancel" action="homepage"/>

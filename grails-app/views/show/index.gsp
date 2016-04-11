@@ -14,5 +14,6 @@
 <body>
     <sec:ifAnyGranted roles="ROLE_ADMIN"><g:link action="newShowForm">Add Show</g:link></sec:ifAnyGranted>
     <sec:ifAnyGranted roles="ROLE_ADMIN"><g:link action="pendingShow">Pending Shows</g:link></sec:ifAnyGranted>
+    <g:each var="item" in="${show}"></g:each>
 </body>
 </html>
