@@ -24,10 +24,13 @@ class ShowController {
     }
 
     def updateShow(){
-
     }
 
     def homepage(){
         redirect(action:"index")
+    }
+
+    def pendingShow () {
+
     }
 }
