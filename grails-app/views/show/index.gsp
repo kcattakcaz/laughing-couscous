@@ -14,6 +14,22 @@
 <body>
     <sec:ifAnyGranted roles="ROLE_ADMIN"><g:link action="newShowForm">Add Show</g:link></sec:ifAnyGranted>
     <sec:ifAnyGranted roles="ROLE_ADMIN"><g:link action="pendingShow">Pending Shows</g:link></sec:ifAnyGranted>
-    <g:each var="item" in="${show}"></g:each>
+    <g:if test="${show.empty}">
+        <p>No shows currently added. Add a show to the approval list.</p><br/>
+    </g:if>
+    <g:else>
+        <g:each var="item" in="${show}">
+            <table border="1px">
+            <tr>
+                <td>${show.name}</td>
+                <td>${show.start_year}</td>
+                <td>${show.end_year}</td>
+                <td>${show.description}</td>
+                <tp>${show.num_episodes}</tp>
+                <tp>${show.tags}</tp>
+            </tr>
+            </table>
+        </g:each>
+    </g:else>
 </body>
 </html>
