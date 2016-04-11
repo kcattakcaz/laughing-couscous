@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+    <g:actionSubmit value="Home" action="homepage"/>
 
 </body>
 </html>
