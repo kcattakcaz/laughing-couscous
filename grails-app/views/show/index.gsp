@@ -12,6 +12,6 @@
 </head>
 
 <body>
-
+    <sec:ifAnyGranted roles="ROLE_ADMIN"><g:link action="newShowForm">Add Show</g:link></sec:ifAnyGranted>
 </body>
 </html>
