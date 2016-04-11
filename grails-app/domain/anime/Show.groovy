@@ -2,6 +2,9 @@ package anime
 
 class Show {
 
+    static hasMany = [tags:Tag]
+    static belongsTo = Tag
+
     static constraints = {
         name blank: false
         start_year min: Date.parse('yyyy','1980'),
@@ -24,6 +27,5 @@ class Show {
         description column: 'description', sqlType: 'mediumtext'
     }
 
-    static hasMany = [tags:Tag]
-    static belongsTo = Tag
+
 }
