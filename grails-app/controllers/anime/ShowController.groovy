@@ -9,7 +9,6 @@ class ShowController {
     def addShow(){
         def show = new Show(params)
 
-
         if (show.save()) {
             redirect(action:"index")
         } else {
@@ -31,6 +30,6 @@ class ShowController {
     }
 
     def pendingShow () {
-
+        def shows = Show.findAllByApproved(false)
     }
 }
