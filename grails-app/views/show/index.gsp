@@ -25,8 +25,8 @@
                 <td>${show.start_year}</td>
                 <td>${show.end_year}</td>
                 <td>${show.description}</td>
-                <tp>${show.num_episodes}</tp>
-                <tp>${show.tags}</tp>
+                <td>${show.num_episodes}</td>
+                <td>${show.tags}</td>
             </tr>
             </table>
         </g:each>

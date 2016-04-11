@@ -10,7 +10,7 @@ class Show {
                 max: Date.parse('yyyy', '2016')
         description blank: false, maxSize: 10000
         num_episodes blank: false, min:1, max:99999
-        approved nullable: true
+        approved nullable: false
     }
 
     String name
