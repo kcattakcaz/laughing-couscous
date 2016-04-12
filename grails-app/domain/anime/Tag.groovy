@@ -3,10 +3,10 @@ package anime
 class Tag {
 
     static constraints = {
-        value maxSize: 100
+        name maxSize: 100
     }
 
-    String value;
+    String name;
 
     static hasMany = [shows:Show]
 

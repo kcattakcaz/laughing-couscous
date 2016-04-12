@@ -8,14 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Tag Management</title>
+    <title>Tags</title>
 </head>
 
 <body>
 
-<g:each var="tag" in="${tags}">
-    ${tag}<br>
-</g:each>
+<h1>Tag Management</h1>
 
+<g:link action="create"><button id="btn_create" type="button">Create</button></g:link>
+
+<ul>
+    <g:each var="tag" in="${tags}">
+        <li><g:link action="show" id="${tag.id}">${tag.name}</g:link></li>
+    </g:each>
+</ul>
 </body>
 </html>

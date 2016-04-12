@@ -4,6 +4,18 @@
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.Anime.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.Anime.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.Anime.Role'
+grails.plugin.springsecurity.logout.postOnly = false
+
+
+grails.plugin.springsecurity.securityConfigType = "Annotation"
+
+
+grails.plugin.springsecurity.rejectIfNoRule = true
+grails.plugin.springsecurity.fii.rejectPublicInvocations = false
+
+
+
+
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
@@ -15,8 +27,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/**/css/**',      access: ['permitAll']],
 	[pattern: '/**/images/**',   access: ['permitAll']],
 	[pattern: '/**/favicon.ico', access: ['permitAll']],
-	[pattern: '/show/**', access: ['isAuthenticated()']],
-	[pattern: '/tag/++', access: ['permitAll']], //temporarily permit all, we'll want to tighten this up a bit
+	[pattern: '/show/**', access: ['isAuthenticated()']]
 ]
 
 grails.plugin.springsecurity.filterChain.chainMap = [
