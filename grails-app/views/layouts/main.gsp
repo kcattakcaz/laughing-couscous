@@ -27,11 +27,11 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><g:link controller="show" action="newShowForm">New Show</g:link></li>
-                        <li><g:link controller="show" action="pendingShow">Moderate Shows</g:link></li>
-                        <li><g:link controller="user" action="account">Account</g:link></li>
-                        <li><g:link controller="logout">Logout</g:link></li>
-                        <li><g:link controller="login" action="auth">Login</g:link></li>
+                        <sec:ifAnyGranted roles="ROLE_ADMIN"><li><g:link controller="show" action="newShowForm">New Show</g:link></li></sec:ifAnyGranted>
+                        <sec:ifAnyGranted roles="ROLE_ADMIN"><li><g:link controller="show" action="pendingShow">Moderate Shows</g:link></li></sec:ifAnyGranted>
+                        <sec:ifLoggedIn><li><g:link controller="user" action="account">Account</g:link></li></sec:ifLoggedIn>
+                        <sec:ifLoggedIn><li><g:link controller="logout">Logout</g:link></li></sec:ifLoggedIn>
+                        <sec:ifNotLoggedIn><li><g:link controller="login" action="auth">Login</g:link></li></sec:ifNotLoggedIn>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

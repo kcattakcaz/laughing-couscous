@@ -13,12 +13,7 @@
 </head>
 
 <body>
-    <sec:ifAnyGranted roles="ROLE_ADMIN"><g:link action="newShowForm">Add Show</g:link></sec:ifAnyGranted>
-    <sec:ifAnyGranted roles="ROLE_ADMIN"><g:link action="pendingShow">Pending Shows</g:link></sec:ifAnyGranted>
-    <g:form controller="logout">
-        <g:submitButton name="logout" value="Logout" />
-    </g:form>
-    <g:if test="${shows}">
+       <g:if test="${shows}">
         <g:each var="show" in="${shows}">
             <table border="1px">
                 <tr>

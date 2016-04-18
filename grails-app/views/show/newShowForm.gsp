@@ -34,8 +34,5 @@
         <g:submitButton name="Submit"/>
        <g:actionSubmit value="Cancel" action="homepage"/>
     </g:form>
-    <g:form controller="logout">
-        <g:submitButton name="logout" value="Logout" />
-    </g:form>
 </body>
 </html>
