@@ -34,5 +34,6 @@ class ShowController {
 
     def pendingShow () {
         def shows = Show.findAllByApproved(false)
+        [shows:shows]
     }
 }

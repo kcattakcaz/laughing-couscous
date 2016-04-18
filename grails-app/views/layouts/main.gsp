@@ -27,9 +27,9 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><g:link action="newShowForm">New Show</g:link></li>
-                        <li><g:link action="pendingShow">Moderate Shows</g:link></li>
-                        <li><g:link action="account">Account</g:link></li>
+                        <li><g:link controller="show" action="newShowForm">New Show</g:link></li>
+                        <li><g:link controller="show" action="pendingShow">Moderate Shows</g:link></li>
+                        <li><g:link controller="user" action="account">Account</g:link></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
