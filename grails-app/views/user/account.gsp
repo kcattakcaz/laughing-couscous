@@ -8,11 +8,27 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
+    <asset:javascript src="jquery-2.1.3.js"/>
+    <asset:javascript src="account.js"/>
+    <asset:stylesheet href="account.css"/>
+    <title>Account Profile</title>
 </head>
 
 <body>
 <h3>Account Profile</h3>
-${user.email}
+<button class="tab" id="profile">Profile</button>
+<button class="tab" id="favorites">Favorites</button>
+
+<div class="info info_profile">
+    Username: ${user.username}<br>
+    Email: ${user.email}
+</div>
+
+<div class="info info_favorites">
+    <g:each var="fav" in="${favorites}">
+        ${fav.show.name}<br>
+    </g:each>
+</div>
+
 </body>
 </html>

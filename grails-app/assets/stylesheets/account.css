@@ -1,0 +1,8 @@
+.tab {
+    position: relative;
+    display: inline-block;
+}
+
+.info_favorites {
+    display: none;
+}

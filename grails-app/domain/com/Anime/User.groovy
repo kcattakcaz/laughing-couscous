@@ -1,5 +1,6 @@
 package com.Anime
 
+import anime.Favorite
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
@@ -11,6 +12,7 @@ class User implements Serializable {
 
 	transient springSecurityService
 
+	static hasMany =  [favorites: Favorite]
 	String username
 	String password
 	String email
@@ -25,6 +27,11 @@ class User implements Serializable {
 		this.password = password
 		this.email = email
 	}
+
+//	Set<Favorite> getFavorites() {
+//		//println this.favorites
+//		this.favorites
+//	}
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this)*.role

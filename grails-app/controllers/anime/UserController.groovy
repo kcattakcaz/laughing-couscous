@@ -18,14 +18,14 @@ class UserController {
 
         def user = new User(params.name, params.password, params.email).save()
         UserRole.create user, userRole
-
-        springSecurityService.reauthenticate user.username
-        redirect(controller: "show", action:"index")
+        //springSecurityService.reauthenticate(user.username)
+        redirect(action: "account")
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def account() {
         def user = springSecurityService.getCurrentUser()
-        [user:user]
+        def favorites = Favorite.findAllByUser(user)
+        [user: user, favorites: favorites]
     }
 }
