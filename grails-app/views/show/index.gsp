@@ -19,8 +19,8 @@
             <table border="1px">
                 <tr>
                     <td>${show.name}</td>
-                    <td>${show.start_year}</td>
-                    <td>${show.end_year}</td>
+                    <td><g:formatDate format="yyyy" date="${show.start_year}"/></td>
+                    <td><g:formatDate format="yyyy" date="${show.end_year}"/> </td>
                     <td>${show.description}</td>
                     <td>${show.num_episodes}</td>
                     <td>${show.tags}</td>
