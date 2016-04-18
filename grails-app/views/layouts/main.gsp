@@ -31,6 +31,7 @@
                         <li><g:link controller="show" action="pendingShow">Moderate Shows</g:link></li>
                         <li><g:link controller="user" action="account">Account</g:link></li>
                         <li><g:link controller="logout">Logout</g:link></li>
+                        <li><g:link controller="login" action="auth">Login</g:link></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
