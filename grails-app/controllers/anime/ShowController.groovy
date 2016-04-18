@@ -1,21 +1,31 @@
 package anime
+import grails.plugin.springsecurity.annotation.Secured
 
 class ShowController {
 
+    @Secured(['permitAll'])
     def index() {
         def shows = Show.list([sort:"name"])
         [shows:shows]
     }
 
-    def newShowForm() {}
+    def newShowForm() {
+        def tags = Tag.list();
+        [tags:tags]
+    }
 
     def addShow(){
-        def show = new Show(params)
+
+
+
+      def show = new Show(params)
+
 
         if (show.save()) {
             redirect(action:"index")
         } else {
-            render(view:"newShowForm",model:[show:show])
+            def tags = Tag.list()
+            render(view:"newShowForm",model:[show:show,tags:tags])
         }
     }
 
@@ -34,5 +44,6 @@ class ShowController {
 
     def pendingShow () {
         def shows = Show.findAllByApproved(false)
+        [shows:shows]
     }
 }

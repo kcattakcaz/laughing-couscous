@@ -9,6 +9,7 @@
 <html>
 <head>
     <title></title>
+    <meta name="layout" content="main">
 </head>
 
 <body>
@@ -28,13 +29,14 @@
                     noSelection="['':'-Choose-']" precision="year"/><br/>
         Show Description:<g:textArea name="description" value="${fieldValue(bean: show, field: 'description')}"/><br/>
         Number of Episodes:<g:textField name="num_episodes" value="${fieldValue(bean: show, field: 'num_episodes')}"/><br/>
-        Tags:<g:textField name="tags" value="${fieldValue(bean: show, field: 'tags')}"/><br/>
+        Tags:
+        <g:select name="tags" from="${tags}" value="${tags}" optionKey="id" optionValue="name">
+
+        </g:select>
+        <br/>
         <g:set var="approved" value="false"/>
         <g:submitButton name="Submit"/>
        <g:actionSubmit value="Cancel" action="homepage"/>
-    </g:form>
-    <g:form controller="logout">
-        <g:submitButton name="logout" value="Logout" />
     </g:form>
 </body>
 </html>

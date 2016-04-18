@@ -9,13 +9,10 @@
 <html>
 <head>
     <title></title>
+    <meta name="layout" content="main">
 </head>
 
 <body>
-    <g:form controller="logout">
-        <g:submitButton name="logout" value="Logout" />
-    </g:form>
-    <g:link action="index">Home</g:link>
 
 </body>
 </html>

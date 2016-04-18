@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Tag Management</title>
+    <meta name="layout" content="main">
 </head>
 
 <body>
