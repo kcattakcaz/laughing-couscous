@@ -9,15 +9,23 @@ class ShowController {
         [shows:shows]
     }
 
-    def newShowForm() {}
+    def newShowForm() {
+        def tags = Tag.list();
+        [tags:tags]
+    }
 
     def addShow(){
-        def show = new Show(params)
+
+
+
+      def show = new Show(params)
+
 
         if (show.save()) {
             redirect(action:"index")
         } else {
-            render(view:"newShowForm",model:[show:show])
+            def tags = Tag.list()
+            render(view:"newShowForm",model:[show:show,tags:tags])
         }
     }
 

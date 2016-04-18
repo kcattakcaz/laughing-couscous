@@ -13,6 +13,7 @@ class TagController {
     @Secured('permitAll')
     def show(){
         def tag = Tag.get(params.id)
+        def shows
 
         [tag:tag]
     }

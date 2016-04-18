@@ -22,7 +22,7 @@
                     <td><g:formatDate format="yyyy" date="${show.end_year}"/> </td>
                     <td>${show.description}</td>
                     <td>${show.num_episodes}</td>
-                    <td>${show.tags}</td>
+                    <td>${show.tags.name.join(", ")}</td>
                 </tr>
             </table>
         </g:each>

@@ -3,7 +3,7 @@ package anime
 class Show {
 
     static hasMany = [tags:Tag]
-    static belongsTo = Tag
+
 
     static constraints = {
         name blank: false
@@ -22,7 +22,6 @@ class Show {
     String description
     Integer num_episodes
     Boolean approved
-    String tags
 
     static mapping = {
         description column: 'description', sqlType: 'mediumtext'
