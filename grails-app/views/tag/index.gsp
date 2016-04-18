@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Tags</title>
+    <meta name="layout" content="main">
 </head>
 
 <body>
