@@ -1,7 +1,9 @@
 package anime
+import grails.plugin.springsecurity.annotation.Secured
 
 class ShowController {
 
+    @Secured(['permitAll'])
     def index() {
         def shows = Show.list([sort:"name"])
         [shows:shows]

@@ -23,7 +23,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <g:link class="navbar-brand" action="index">Anime Project Senpai</g:link>
+                    <g:link class="navbar-brand" controller="show" action="index">Anime Project Senpai</g:link>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
