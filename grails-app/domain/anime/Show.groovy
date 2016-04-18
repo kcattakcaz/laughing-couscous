@@ -13,7 +13,7 @@ class Show {
                 max: Date.parse('yyyy', '2016')
         description blank: false, maxSize: 10000
         num_episodes blank: false, min:1, max:99999
-        approved nullable: false
+        approved nullable: true
     }
 
     String name
@@ -22,6 +22,7 @@ class Show {
     String description
     Integer num_episodes
     Boolean approved
+    String tags
 
     static mapping = {
         description column: 'description', sqlType: 'mediumtext'

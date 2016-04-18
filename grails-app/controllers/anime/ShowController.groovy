@@ -2,7 +2,10 @@ package anime
 
 class ShowController {
 
-    def index() {}
+    def index() {
+        def shows = Show.list([sort:"name"])
+        [shows:shows]
+    }
 
     def newShowForm() {}
 
