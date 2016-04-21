@@ -26,6 +26,7 @@ class BootStrap {
         show.description = "Test"
         show.num_episodes = 10
         show.approved = true
+        show.image = []
         show.save(flush:true)
 
         Show.withSession {
@@ -33,12 +34,8 @@ class BootStrap {
             it.clear()
         }
 
-        def favorite = new Favorite(admin, show, new Date())
+        def favorite = new Favorite(User.findByUsername("admin"), show, new Date())
         favorite.save(flush:true)
-
-        assert User.count() == 2
-        assert Role.count() == 2
-        assert UserRole.count() == 2
     }
     def destroy = {
     }

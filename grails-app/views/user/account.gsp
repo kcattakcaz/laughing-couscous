@@ -29,7 +29,11 @@
     <div class="info info_favorites">
         <g:if test="${favorites}">
             <g:each var="fav" in="${favorites}">
-                ${fav.show.name}<br>
+                <div class="fav">
+                    <p class="show_name">${fav.show.name}</p>
+                    <p class="show_description">${fav.show.description}</p>
+                    <g:if test="${fav.show.start_year}"><p class="show_date">${fav.show.start_year} - ${fav.show.end_year}</p></g:if>
+                </div>
             </g:each>
         </g:if>
         <g:else>
