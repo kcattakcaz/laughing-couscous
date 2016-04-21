@@ -1,9 +1,8 @@
-/**
- * Created by Jacob on 4/18/2016.
- */
 $(document).ready(function() {
     $(".tab").click(function() {
         $(".info").hide();
+        $(".tab").removeClass("active");
+        $(this).addClass("active");
         if ($(this).attr("id") == "profile") {
             $(".info_profile").show();
         }

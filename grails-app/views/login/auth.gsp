@@ -35,7 +35,7 @@
         clear: left;
         margin: 0;
         padding: 4px 0 3px 0;
-        padding-left: 105px;
+        padding-left: 25px;
         margin-bottom: 20px;
         height: 1%;
     }
@@ -55,11 +55,14 @@
     }
 
     #login #remember_me_holder {
-        padding-left: 120px;
+        /*padding-left: 120px;*/
+        height: 15px !important;
     }
 
     #login #submit {
-        margin-left: 15px;
+        width: 285px;
+        height: 40px;
+        margin-bottom: 10px;
     }
 
     #login #remember_me_holder label {
@@ -75,11 +78,24 @@
     }
 
     #login .inner .text_ {
-        width: 120px;
+        width: 285px !important;
+        height: 40px;
+        padding: 5px;
     }
 
     #login .inner .chk {
         height: 12px;
+    }
+
+    .register, .register:hover, .register:active, .register:visited {
+        color: #333;
+        text-decoration: none;
+
+    }
+
+    .register_button {
+        width: 285px;
+        height: 40px;
     }
     </style>
 </head>
@@ -95,13 +111,13 @@
 
         <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
             <p>
-                <label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
-                <input type="text" class="text_" name="${usernameParameter ?: 'username'}" id="username"/>
+                %{--<label for="username"><g:message code='springSecurity.login.username.label'/>:</label>--}%
+                <input placeholder="Username" type="text" class="text_" name="${usernameParameter ?: 'username'}" id="username"/>
             </p>
 
             <p>
-                <label for="password"><g:message code='springSecurity.login.password.label'/>:</label>
-                <input type="password" class="text_" name="${passwordParameter ?: 'password'}" id="password"/>
+                %{--<label for="password"><g:message code='springSecurity.login.password.label'/>:</label>--}%
+                <input placeholder="Password" type="password" class="text_" name="${passwordParameter ?: 'password'}" id="password"/>
             </p>
 
             <p id="remember_me_holder">
@@ -110,10 +126,11 @@
             </p>
 
             <p>
-                <input type="submit" id="submit" value="${message(code: 'springSecurity.login.button')}"/>
+                <input type="submit" id="submit" value="${message(code: 'springSecurity.login.button')}"/><br>
+               <g:link class="register" controller="user" action="register"> <button type="button" class="register_button">Register</button></g:link>
             </p>
+
         </form>
-        <p><g:link controller="user" action="register">Register</g:link></p>
     </div>
 </div>
 <script>

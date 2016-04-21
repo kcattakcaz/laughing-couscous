@@ -1,8 +1,34 @@
 .tab {
     position: relative;
     display: inline-block;
+    background: none;
+    width: 90px;
+    height: 40px;
+    border: 2px solid #9b9b9b;
+    margin-right: -6px;
+}
+
+button:focus {outline:0;}
+
+.active {
+    border-color: #9b9b9b;
+    background-color: #9b9b9b;
+    color: #fff;
 }
 
 .info_favorites {
     display: none;
+}
+
+.info {
+    border: 2px solid #9b9b9b;
+    top: -2px;
+    position: relative;
+    padding: 10px;
+}
+
+.user_info {
+    width: 125px;
+    font-weight: bold;
+    display: inline-block;
 }
