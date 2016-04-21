@@ -7,16 +7,20 @@ class ShowController {
     def index() {
         def shows = Show.list([sort:"name"])
         [shows:shows]
+
     }
 
     def newShowForm() {
         def tags = Tag.list();
         [tags:tags]
+
+        def saveImage = {
+            def file = request.getFile('file').inputStream.text
+            file.transferTo(new File('/tmp'))
+        }
     }
 
     def addShow(){
-
-
 
       def show = new Show(params)
 
@@ -29,11 +33,13 @@ class ShowController {
         }
     }
 
+    @Secured(['ROLE_ADMIN'])
     def deleteShow(){
-        def show = Show.get(params.id)
-        show.delete()
+        def s = Show.get(params.id)
+        s.delete()
         redirect(action:"index")
     }
+
 
     def updateShow(){
     }

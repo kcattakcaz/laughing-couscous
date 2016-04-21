@@ -21,7 +21,7 @@ class BootStrap {
             it.clear()
         }
 
-
+/*
         def show = new Show()
         show.name = "Test"
         show.description = "Test"
@@ -39,7 +39,7 @@ class BootStrap {
 
         def favorite = new Favorite(admin, show, new Date())
         favorite.save(flush:true)
-
+*/
 
         assert User.count() == 2
         assert Role.count() == 2

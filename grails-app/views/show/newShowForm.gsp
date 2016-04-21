@@ -22,6 +22,10 @@
     </g:hasErrors>
     <h1>Add New Show</h1>
     <g:form action="addShow">
+        Image: <g:uploadForm controller="show" action="saveImage" >
+                    <input type="file" name="imageFile" />
+                    <input type="submit" />
+                </g:uploadForm>
         Show Name:<g:textField name="name" value="${fieldValue(bean: show, field: 'name')}"/><br/>
         Start Date:<g:datePicker name="start_year" value="${new Date()}"
                     noSelection="['':'-Choose-']" precision="year"/><br/>
@@ -29,12 +33,12 @@
                     noSelection="['':'-Choose-']" precision="year"/><br/>
         Show Description:<g:textArea name="description" value="${fieldValue(bean: show, field: 'description')}"/><br/>
         Number of Episodes:<g:textField name="num_episodes" value="${fieldValue(bean: show, field: 'num_episodes')}"/><br/>
-        Tags:
+        <%--Tags:
         <g:select name="tags" from="${tags}" value="${tags}" optionKey="id" optionValue="name">
 
         </g:select>
         <br/>
-        <g:set var="approved" value="false"/>
+        <g:set var="approved" value="false"/>--%>
         <g:submitButton name="Submit"/>
        <g:actionSubmit value="Cancel" action="homepage"/>
     </g:form>

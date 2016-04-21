@@ -19,6 +19,7 @@ class Show {
         tags nullable: true
     }
 
+    byte[] image
     String name
     Date start_year
     Date end_year
