@@ -9,7 +9,7 @@ class ShowController {
         [shows:shows]
 
     }
-
+    @Secured(['ROLE_ADMIN'])
     def newShowForm() {
         def tags = Tag.list();
         [tags:tags]
