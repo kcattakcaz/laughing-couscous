@@ -14,10 +14,10 @@ class ShowController {
         def tags = Tag.list();
         [tags:tags]
 
-        def saveImage = {
-            def file = request.getFile('file').inputStream.text
-            file.transferTo(new File('/tmp'))
-        }
+       // def saveImage = {
+       //     def file = request.getFile('file').inputStream.text
+       //     file.transferTo(new File('/tmp'))
+       // }
     }
 
     def addShow(){

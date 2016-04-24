@@ -12,7 +12,6 @@
     <meta name="layout" content="main">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><g:layoutTitle default="Grails"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
@@ -31,10 +30,10 @@
     </g:hasErrors>
     <h1>Add New Show</h1>
     <g:form action="addShow">
-        Image: <g:uploadForm controller="show" action="saveImage" >
+        <%--Image: <g:uploadForm controller="show" action="saveImage" >
                     <input type="file" name="imageFile" />
                     <input type="submit" />
-                </g:uploadForm>
+                </g:uploadForm>--%>
         Show Name:<g:textField name="name" value="${fieldValue(bean: show, field: 'name')}"/><br/>
         Start Date:<g:datePicker name="start_year" value="${new Date()}"
                     noSelection="['':'-Choose-']" precision="year"/><br/>
@@ -51,5 +50,7 @@
         <g:submitButton name="Submit"/>
        <g:actionSubmit value="Cancel" action="homepage"/>
     </g:form>
+
+Hello World
 </body>
 </html>

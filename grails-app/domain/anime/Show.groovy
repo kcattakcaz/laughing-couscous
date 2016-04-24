@@ -17,6 +17,7 @@ class Show {
         num_episodes blank: false, min:1, max:99999
         approved nullable: true
         tags nullable: true
+        image nullable: true
     }
 
     byte[] image
