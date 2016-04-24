@@ -5,7 +5,7 @@ class ShowController {
 
     @Secured(['permitAll'])
     def index() {
-        def shows = Show.list([sort:"name"])
+        def shows = Show.findAllByApproved(true)
         [shows:shows]
 
     }
@@ -51,5 +51,12 @@ class ShowController {
     def pendingShow () {
         def shows = Show.findAllByApproved(false)
         [shows:shows]
+    }
+
+    def approveShow(){
+        def s = Show.get(params.id)
+        s.approved = true
+        s.save()
+        redirect(action:"index")
     }
 }

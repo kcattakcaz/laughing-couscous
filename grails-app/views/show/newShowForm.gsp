@@ -46,7 +46,7 @@
 
         </g:select>
         <br/>
-        <g:set var="approved" value="false"/>
+        <g:hiddenField name="approved" value="false"/>
         <g:submitButton name="Submit"/>
        <g:actionSubmit value="Cancel" action="homepage"/>
     </g:form>
