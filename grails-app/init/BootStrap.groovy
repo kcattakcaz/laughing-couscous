@@ -28,6 +28,7 @@ class BootStrap {
         show.approved = true
         show.image = []
         show.save(flush:true)
+        show.tags = "Test"
 
         Show.withSession {
             it.flush()

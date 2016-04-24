@@ -42,7 +42,7 @@
         Show Description:<g:textArea name="description" value="${fieldValue(bean: show, field: 'description')}"/><br/>
         Number of Episodes:<g:textField name="num_episodes" value="${fieldValue(bean: show, field: 'num_episodes')}"/><br/>
         Tags:
-        <g:select name="tags" from="${tags}" value="${tags}" optionKey="id" optionValue="name">
+        <g:select name="tags" from="${tags}" value="${tags}" controller="Tag" optionKey="id" optionValue="name">
 
         </g:select>
         <br/>
@@ -51,6 +51,5 @@
        <g:actionSubmit value="Cancel" action="homepage"/>
     </g:form>
 
-Hello World
 </body>
 </html>
