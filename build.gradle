@@ -81,6 +81,6 @@ task wrapper(type: Wrapper) {
 }
 
 task stage {
-    dependsOn grails
+    dependsOn build
 }
 
