@@ -117,11 +117,11 @@
                         </div>
 
                         <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
-                            Show Start: ${show.start_year}
+                            Show Start: <g:formatDate format="yyyy" date="${show.start_year}"/>
                         </div>
 
                         <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
-                            Show End: ${show.end_year}
+                            Show End: <g:formatDate format="yyyy" date="${show.end_year}"/>
                         </div>
 
                         <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
