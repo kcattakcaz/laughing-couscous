@@ -21,7 +21,7 @@ class BootStrap {
             it.clear()
         }
 
-        def show = new Show()
+        /*def show = new Show()
         show.name = "Test"
         show.description = "Test"
         show.num_episodes = 10
@@ -36,7 +36,7 @@ class BootStrap {
         }
 
         def favorite = new Favorite(User.findByUsername("admin"), show, new Date())
-        favorite.save(flush:true)
+        favorite.save(flush:true)*/
     }
     def destroy = {
     }

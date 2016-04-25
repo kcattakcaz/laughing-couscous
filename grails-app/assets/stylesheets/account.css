@@ -35,4 +35,18 @@ button:focus {outline:0;}
 
 .fav {
     border-bottom: 1px solid #afafaf;
+    padding: 10px;
+    position: relative;
+}
+
+.fav_image {
+    width: 300px;
+    position: relative;
+    display: inline-block;
+}
+
+.text_info {
+    position: relative;
+    display: inline-block;
+    padding-left: 30px;
 }

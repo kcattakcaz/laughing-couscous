@@ -1,7 +1,11 @@
 package anime
+
+import com.Anime.User
 import grails.plugin.springsecurity.annotation.Secured
 
 class ShowController {
+
+    def springSecurityService
 
     @Secured(['permitAll'])
     def index() {
@@ -57,6 +61,14 @@ class ShowController {
         def s = Show.get(params.id)
         s.approved = true
         s.save()
+        redirect(action:"index")
+    }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
+    def addFavorite() {
+        def user = springSecurityService.getCurrentUser()
+        def show = Show.findById(params.id.toInteger())
+        new Favorite(user, show, new Date()).save()
         redirect(action:"index")
     }
 }

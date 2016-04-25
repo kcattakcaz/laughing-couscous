@@ -30,16 +30,18 @@
         <g:if test="${favorites}">
             <g:each var="fav" in="${favorites}">
                 <div class="fav">
-                    <p class="show_name">${fav.show.name}</p>
-                    <p class="show_description">${fav.show.description}</p>
-                    <g:if test="${fav.show.start_year}"><p class="show_date">${fav.show.start_year} - ${fav.show.end_year}</p></g:if>
+                    <img class="fav_image" src="http://placehold.it/2500x2000" alt="...">
+                    <div class="text_info">
+                        <p class="show_name">${fav.show.name}</p>
+                        <p class="show_description">${fav.show.description}</p>
+                        <g:if test="${fav.show.start_year}"><p class="show_date">${fav.show.start_year} - ${fav.show.end_year}</p></g:if>
+                    </div>
                 </div>
             </g:each>
         </g:if>
         <g:else>
             <h4>You have no favorite shows.</h4>
         </g:else>
-
     </div>
 </div>
 </body>
