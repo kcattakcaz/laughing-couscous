@@ -18,6 +18,8 @@ class Show {
         approved nullable: true
         tags nullable: true
         image nullable: true
+        rating nullable: true, min: 0, max: 5
+
     }
 
     byte[] image
@@ -28,6 +30,7 @@ class Show {
     Integer num_episodes
     Boolean approved
     String tags
+    int rating
 
     static mapping = {
         description column: 'description', sqlType: 'mediumtext'

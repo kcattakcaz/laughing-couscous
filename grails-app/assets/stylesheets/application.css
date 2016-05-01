@@ -13,3 +13,45 @@
 */
 
 body { padding-top: 70px; }
+
+button:focus {outline:0;}
+
+.fav_button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    position: relative;
+    top: -6px;
+}
+
+.favorited {
+    color: #ff0002;
+}
+
+.favForm {
+    position: relative;
+    display: inline-block;
+    left: 16px;
+}
+
+.rating {
+    top: -44px;
+    position: relative;
+    left: 145px;
+    font-size: 20px;
+}
+
+.deleteButton {
+    background: none;
+    border: none;
+    font-size: 30px;
+    position: relative;
+    top: -90px;
+    left: 375px;
+}
+
+.star {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}

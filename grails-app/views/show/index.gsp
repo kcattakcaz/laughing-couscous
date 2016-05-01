@@ -5,7 +5,7 @@
   Time: 6:21 PM
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="anime.Favorite" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title></title>
@@ -15,10 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
-    <asset:stylesheet src="bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <asset:stylesheet src="bootstrap-theme.min.css"/>
     <asset:javascript src="bootstrap.min.js"/>
-
 </head>
 
 <body>
@@ -86,12 +85,8 @@
     </div>
 </div>--%>
 
-
-</div>
-</div>
 <g:if test="${shows}">
     <g:each var="show" in="${shows}">
-
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="jumbotron">
@@ -102,11 +97,26 @@
 
                                 <div class="caption">
                                     <p>
-                                        <g:form controller="show" action="addFavorite">
-                                            <g:hiddenField name="id" value="${show.id}"/>
-                                            <button type="submit" class="btn btn-primary">Favorite</button>
-                                        </g:form>
-                                        <span style="padding-left: 150px"><a href="#" class="btn btn-default" role="button">Replace with rating stars</a></span>
+                                        <g:if test="${Favorite.findByUserAndShow(user, show)}">
+                                            <g:form class="favForm" controller="show" action="deleteFavorite">
+                                                <g:hiddenField name="id" value="${show.id}"/>
+                                                <sec:ifAnyGranted  roles="ROLE_ADMIN,ROLE_USER"><button type="submit" class="fav_button favorited"><span class="glyphicon glyphicon-heart"></span></button></sec:ifAnyGranted>
+                                            </g:form>
+                                        </g:if>
+                                        <g:else>
+                                            <g:form class="favForm" controller="show" action="addFavorite">
+                                                <g:hiddenField name="id" value="${show.id}"/>
+                                                <sec:ifAnyGranted  roles="ROLE_ADMIN,ROLE_USER"><button type="submit" class="fav_button"><span class="glyphicon glyphicon-heart"></span></button></sec:ifAnyGranted>
+                                            </g:form>
+                                        </g:else>
+
+                                        <div class="rating">
+                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                        </div>
                                     </p>
                                 </div>
                             </div>
@@ -140,10 +150,11 @@
                         </div>
 
                         <div class="col-md-12">
-                            <g:form controller="show" action="deleteShow">
+                            <g:form class="deleteForm" controller="show" action="deleteShow">
                                 <g:hiddenField name="id" value="${show.id}"/>
-                                <sec:ifAllGranted roles="ROLE_ADMIN"><td><p align="center">
-                                    <g:submitButton name="Delete"/></p></td></sec:ifAllGranted>
+                                <sec:ifAllGranted roles="ROLE_ADMIN">
+                                    <button type="submit" class="deleteButton"><span class="glyphicon glyphicon-trash"></span></button>
+                                </sec:ifAllGranted>
                             </g:form>
 
                         </div>
