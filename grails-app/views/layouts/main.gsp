@@ -6,11 +6,11 @@
         <title><g:layoutTitle default="Grails"/></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <asset:stylesheet src="application.css"/>
-        <asset:javascript src="application.js"/>
         <asset:stylesheet src="bootstrap.min.css"/>
         <asset:stylesheet src="bootstrap-theme.min.css"/>
+        <asset:javascript src="jquery-2.1.3.js"/>
+        <asset:javascript src="application.js"/>
         <asset:javascript src="bootstrap.min.js"/>
-
         <g:layoutHead/>
     </head>
     <body>

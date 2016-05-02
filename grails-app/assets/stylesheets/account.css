@@ -50,3 +50,18 @@ button:focus {outline:0;}
     display: inline-block;
     padding-left: 30px;
 }
+
+.other_info {
+    height: 30px;
+    position: relative;
+    padding: 8px 0px 0px 0px;
+}
+
+.favoriteForm {
+    position: relative;
+    display: inline-block;
+}
+
+.rating {
+    left: 85px !important;
+}

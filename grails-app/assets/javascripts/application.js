@@ -13,6 +13,8 @@
 
 if (typeof jQuery !== 'undefined') {
     (function($) {
+        $('[data-toggle="tooltip"]').tooltip();
+
         $('#spinner').ajaxStart(function() {
             $(this).fadeIn();
         }).ajaxStop(function() {

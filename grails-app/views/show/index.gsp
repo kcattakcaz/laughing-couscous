@@ -13,12 +13,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <asset:stylesheet src="application.css"/>
-    <asset:javascript src="application.js"/>
     <asset:javascript src="index.js"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <asset:stylesheet src="bootstrap-theme.min.css"/>
-    <asset:javascript src="bootstrap.min.js"/>
 </head>
 
 <body>

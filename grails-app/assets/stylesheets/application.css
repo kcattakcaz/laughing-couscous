@@ -12,9 +12,17 @@
 *= require_self
 */
 
-body { padding-top: 70px; }
+body {
+    padding-top: 70px;
+    background: url("../images/scuffedstatic_dark1400x900.jpg") no-repeat;
+    background-size: 100%;
+}
 
 button:focus {outline:0;}
+
+.white {
+    color: #fff;
+}
 
 .fav_button {
     background: none;

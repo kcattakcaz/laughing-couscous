@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+
     $(".tab").click(function() {
         $(".info").hide();
         $(".tab").removeClass("active");
