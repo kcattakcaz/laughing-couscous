@@ -84,7 +84,6 @@
         </div>
     </div>
 </div>--%>
-
 <g:if test="${shows}">
     <g:each var="show" in="${shows}">
         <div class="row">
@@ -111,11 +110,56 @@
                                         </g:else>
 
                                         <div class="rating">
-                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
-                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
-                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
-                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
-                                            <div class="star"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                            <g:form class="starForm" controller="show" action="rate">
+                                                <g:hiddenField name="star" value="1"/>
+                                                <g:hiddenField name="id" value="${show.id}"/>
+                                                <g:if test="${show.rating && show.rating >= 1}">
+                                                    <button class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                                </g:if>
+                                                <g:else>
+                                                    <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                                </g:else>
+                                            </g:form>
+                                            <g:form class="starForm" controller="show" action="rate">
+                                                <g:hiddenField name="star" value="2"/>
+                                                <g:hiddenField name="id" value="${show.id}"/>
+                                                <g:if test="${show.rating && show.rating >= 2}">
+                                                    <button type="submit" class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                                </g:if>
+                                                <g:else>
+                                                    <button type="submit" class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                                </g:else>
+                                            </g:form>
+                                            <g:form class="starForm" controller="show" action="rate">
+                                                <g:hiddenField name="star" value="3"/>
+                                                <g:hiddenField name="id" value="${show.id}"/>
+                                                <g:if test="${show.rating && show.rating >= 3}">
+                                                    <button class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                                </g:if>
+                                                <g:else>
+                                                    <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                                </g:else>
+                                            </g:form>
+                                            <g:form class="starForm" controller="show" action="rate">
+                                                <g:hiddenField name="star" value="4"/>
+                                                <g:hiddenField name="id" value="${show.id}"/>
+                                                <g:if test="${show.rating && show.rating >= 4}">
+                                                    <button class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                                </g:if>
+                                                <g:else>
+                                                    <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                                </g:else>
+                                            </g:form>
+                                            <g:form class="starForm" controller="show" action="rate">
+                                                <g:hiddenField name="star" value="5"/>
+                                                <g:hiddenField name="id" value="${show.id}"/>
+                                                <g:if test="${show.rating && show.rating >= 5}">
+                                                    <button class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                                </g:if>
+                                                <g:else>
+                                                    <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                                </g:else>
+                                            </g:form>
                                         </div>
                                     </p>
                                 </div>

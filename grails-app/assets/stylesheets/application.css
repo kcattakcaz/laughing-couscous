@@ -50,8 +50,11 @@ button:focus {outline:0;}
     left: 375px;
 }
 
-.star {
+.star, .starForm {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 1px;
 }

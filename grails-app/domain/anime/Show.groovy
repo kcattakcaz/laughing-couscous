@@ -2,7 +2,7 @@ package anime
 
 class Show {
 
-    static hasMany = [tags:Tag, favorites: Favorite]
+    static hasMany = [tags:Tag, favorites: Favorite, ratings: Rating]
     static belongsTo = Tag
 
     static constraints = {
@@ -17,12 +17,10 @@ class Show {
         num_episodes blank: false, min:1, max:99999
         approved nullable: true
         tags nullable: true
-        image nullable: true
-        rating nullable: true, min: 0, max: 5
-
+        ratings nullable: true
+        rating nullable: true
     }
 
-    byte[] image
     String name
     Date start_year
     Date end_year
@@ -30,11 +28,9 @@ class Show {
     Integer num_episodes
     Boolean approved
     String tags
-    int rating
+    Float rating
 
     static mapping = {
         description column: 'description', sqlType: 'mediumtext'
     }
-
-
 }

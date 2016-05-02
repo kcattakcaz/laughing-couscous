@@ -10,57 +10,55 @@ class ShowController {
     @Secured(['permitAll'])
     def index() {
         def shows = Show.findAllByApproved(true)
-        [shows:shows, user:springSecurityService.getCurrentUser()]
+        [shows: shows, user: springSecurityService.getCurrentUser()]
     }
+
     @Secured(['ROLE_ADMIN'])
     def newShowForm() {
         def tags = Tag.list();
-        [tags:tags]
+        [tags: tags]
 
-       // def saveImage = {
-       //     def file = request.getFile('file').inputStream.text
-       //     file.transferTo(new File('/tmp'))
-       // }
+        // def saveImage = {
+        //     def file = request.getFile('file').inputStream.text
+        //     file.transferTo(new File('/tmp'))
+        // }
     }
 
-    def addShow(){
-
-      def show = new Show(params)
-
+    def addShow() {
+        def show = new Show(params)
 
         if (show.save()) {
-            redirect(action:"index")
+            redirect(action: "index")
         } else {
             def tags = Tag.list()
-            render(view:"newShowForm",model:[show:show,tags:tags])
+            render(view: "newShowForm", model: [show: show, tags: tags])
         }
     }
 
     @Secured(['ROLE_ADMIN'])
-    def deleteShow(){
+    def deleteShow() {
         def s = Show.get(params.id)
         s.delete()
-        redirect(action:"index")
+        redirect(action: "index")
     }
 
-
-    def updateShow(){
+    def updateShow() {
     }
 
-    def homepage(){
-        redirect(action:"index")
+    def homepage() {
+        redirect(action: "index")
     }
 
-    def pendingShow () {
+    def pendingShow() {
         def shows = Show.findAllByApproved(false)
-        [shows:shows]
+        [shows: shows]
     }
 
-    def approveShow(){
+    def approveShow() {
         def s = Show.get(params.id)
         s.approved = true
         s.save()
-        redirect(action:"index")
+        redirect(action: "index")
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
@@ -68,7 +66,7 @@ class ShowController {
         def user = springSecurityService.getCurrentUser()
         def show = Show.findById(params.id.toInteger())
         new Favorite(user, show, new Date()).save()
-        redirect(action:"index")
+        redirect(action: "index")
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
@@ -76,13 +74,30 @@ class ShowController {
         def user = springSecurityService.getCurrentUser()
         def show = Show.findById(params.id.toInteger())
         def fav = Favorite.findByUserAndShow(user, show)
-        println fav
         fav.delete()
-        redirect(action:"index")
+        redirect(action: "index")
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
-    def rate(int star) {
+    def rate() {
+        def show = Show.findById(params.id.toInteger())
+        def user = springSecurityService.getCurrentUser()
+        def r = Rating.findByShowAndUser(show, user)
 
+        if (r) {
+            r.stars = params.star.toInteger()
+            r.save()
+        } else {
+            def rating = new Rating(user, show, params.star.toInteger())
+            show.addToRatings(rating)
+        }
+
+        def total = 0
+        show.ratings.each {
+            total += it.stars
+        }
+        show.rating = total / show.ratings.size()
+        show.save()
+        redirect(action: "index")
     }
 }
