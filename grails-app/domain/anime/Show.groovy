@@ -19,6 +19,8 @@ class Show {
         tags nullable: true
         ratings nullable: true
         rating nullable: true
+        image(nullable:true, maxSize: 16384 /* 16K */)
+        image_type(nullable:true)
     }
 
     String name
@@ -29,6 +31,8 @@ class Show {
     Boolean approved
     String tags
     Float rating
+    byte[] image
+    String image_type
 
     static mapping = {
         description column: 'description', sqlType: 'mediumtext'

@@ -2,10 +2,12 @@ package anime
 
 import com.Anime.User
 import grails.plugin.springsecurity.annotation.Secured
+import grails.web.context.ServletContextHolder
 
 class ShowController {
 
     def springSecurityService
+    def ser
 
     @Secured(['permitAll'])
     def index() {
@@ -26,6 +28,17 @@ class ShowController {
 
     def addShow() {
         def show = new Show(params)
+
+        def servletContext = ServletContextHolder.servletContext
+        def path = servletContext.getRealPath("assets/show_images")
+        //def storagePathDirectory = new File(path)
+
+        def f = request.getFile('image')
+        //show.image_path = "${path}/${show.id}.png"
+        //f.transferTo(new File(show.image_path))
+
+        show.image = f.bytes
+        show.image_type = f.contentType
 
         if (show.save()) {
             redirect(action: "index")
@@ -99,5 +112,18 @@ class ShowController {
         show.rating = total / show.ratings.size()
         show.save()
         redirect(action: "index")
+    }
+
+    def show_image() {
+        def show = Show.get(params.id)
+        if (!show || !show.image || !show.image_type) {
+            response.sendError(404)
+            return
+        }
+        response.contentType = show.image_type
+        response.contentLength = show.image.size()
+        OutputStream out = response.outputStream
+        out.write(show.image)
+        out.close()
     }
 }

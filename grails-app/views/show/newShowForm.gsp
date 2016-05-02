@@ -29,11 +29,12 @@
         </ul>
     </g:hasErrors>
     <h1>Add New Show</h1>
-    <g:form action="addShow">
+    <g:uploadForm action="addShow">
         <%--Image: <g:uploadForm controller="show" action="saveImage" >
                     <input type="file" name="imageFile" />
                     <input type="submit" />
                 </g:uploadForm>--%>
+        <input type="file" name="image"/>
         Show Name:<g:textField name="name" value="${fieldValue(bean: show, field: 'name')}"/><br/>
         Start Date:<g:datePicker name="start_year" value="${new Date()}"
                     noSelection="['':'-Choose-']" precision="year"/><br/>
@@ -49,7 +50,7 @@
         <g:hiddenField name="approved" value="false"/>
         <g:submitButton name="Submit"/>
        <g:actionSubmit value="Cancel" action="homepage"/>
-    </g:form>
+    </g:uploadForm>
 
 </body>
 </html>

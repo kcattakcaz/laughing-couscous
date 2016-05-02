@@ -5,7 +5,7 @@
   Time: 6:21 PM
 --%>
 
-<%@ page import="anime.Favorite" contentType="text/html;charset=UTF-8" %>
+<%@ page import="anime.Rating; anime.Favorite" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title></title>
@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
+    <asset:javascript src="index.js"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <asset:stylesheet src="bootstrap-theme.min.css"/>
     <asset:javascript src="bootstrap.min.js"/>
@@ -92,7 +93,7 @@
                     <div class="row">
                         <div class="col-xs-8 col-sm-6" style="margin-top: -35px">
                             <div class="thumbnail">
-                                <img src="http://placehold.it/2500x2000" alt="...">
+                                <img class="showImage" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
 
                                 <div class="caption">
                                     <p>
@@ -109,7 +110,7 @@
                                             </g:form>
                                         </g:else>
 
-                                        <div class="rating">
+                                        <div class="rating" data-toggle="tooltip" title="${user && Rating.findByShowAndUser(show, user) ? "Overall rating: " + show.rating + ", Your rating: " + Rating.findByShowAndUser(show, user).stars.toFloat() : "Overall rating: " + show.rating}">
                                             <g:form class="starForm" controller="show" action="rate">
                                                 <g:hiddenField name="star" value="1"/>
                                                 <g:hiddenField name="id" value="${show.id}"/>
@@ -124,10 +125,10 @@
                                                 <g:hiddenField name="star" value="2"/>
                                                 <g:hiddenField name="id" value="${show.id}"/>
                                                 <g:if test="${show.rating && show.rating >= 2}">
-                                                    <button type="submit" class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                                    <button class="star"><span class="glyphicon glyphicon-star"></span></button>
                                                 </g:if>
                                                 <g:else>
-                                                    <button type="submit" class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                                    <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
                                                 </g:else>
                                             </g:form>
                                             <g:form class="starForm" controller="show" action="rate">

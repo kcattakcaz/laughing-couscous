@@ -39,6 +39,7 @@ button:focus {outline:0;}
     position: relative;
     left: 145px;
     font-size: 20px;
+    width: 143px;
 }
 
 .deleteButton {
@@ -57,4 +58,13 @@ button:focus {outline:0;}
     background: none;
     border: none;
     padding: 1px;
+    color: #ffb900;
+}
+
+.star:hover {
+    color: #fff300;
+}
+
+.showImage {
+    max-width: 300px;
 }
