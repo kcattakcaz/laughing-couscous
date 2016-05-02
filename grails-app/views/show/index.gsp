@@ -110,7 +110,7 @@
                                             </g:form>
                                         </g:else>
 
-                                        <div class="rating" data-toggle="tooltip" title="${user && Rating.findByShowAndUser(show, user) ? "Overall rating: " + show.rating + ", Your rating: " + Rating.findByShowAndUser(show, user).stars.toFloat() : "Overall rating: " + show.rating}">
+                                        <div class="rating" data-toggle="tooltip" title="${user && Rating.findByShowAndUser(show, user) ? "Overall rating: " + show.rating + ", Your rating: " + Rating.findByShowAndUser(show, user).stars.toFloat() : show.rating ? "Overall rating: " + show.rating : "No current ratings"}">
                                             <g:form class="starForm" controller="show" action="rate">
                                                 <g:hiddenField name="star" value="1"/>
                                                 <g:hiddenField name="id" value="${show.id}"/>
