@@ -2,8 +2,7 @@ package anime
 
 class Show {
 
-    static hasMany = [tags:Tag, favorites: Favorite, ratings: Rating]
-    static belongsTo = Tag
+    static hasMany = [tags: Tag, favorites: Favorite, ratings: Rating]
 
     static constraints = {
         name blank: false
@@ -19,8 +18,8 @@ class Show {
         tags nullable: true
         ratings nullable: true
         rating nullable: true
-        image(nullable:true, maxSize: 16384 /* 16K */)
-        image_type(nullable:true)
+        image nullable:true
+        image_type nullable:true
     }
 
     String name

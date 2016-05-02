@@ -38,7 +38,7 @@
         <div class="form_label">Number of Episodes:</div><g:textField name="num_episodes"
                                          value="${fieldValue(bean: show, field: 'num_episodes')}"/><br/>
         <div class="form_label tag_label">Tags:</div>
-        <g:select name="tags" from="${tags}" value="${tags}" controller="Tag" optionKey="id" optionValue="name">
+        <g:select name="tagIds" from="${tags}" value="${tags}" controller="Tag" optionKey="id" optionValue="name">
 
         </g:select>
         <br/>

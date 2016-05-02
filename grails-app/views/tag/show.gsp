@@ -13,22 +13,22 @@
 </head>
 
 <body>
+<div class="container">
+    <h2 class="white">${tag.name}</h2>
 
-<h2>${tag.name}</h2>
+    <g:link action="edit"><button id="btn_edit" type="button">Edit</button></g:link>
+    <button id="btn_delete" type="button">Delete</button>
 
-<g:link action="edit"><button id="btn_edit" type="button">Edit</button></g:link>
-<button id="btn_delete" type="button">Delete</button>
+    <script>
 
-<script>
-
-    $("#btn_delete").on('click',function(){
-        $.ajax({
-            type:"DELETE",
-            url:${createLink(action:'delete',params:[id:tag])}
+        $("#btn_delete").on('click', function () {
+            $.ajax({
+                type: "DELETE",
+                url:${createLink(action:'delete',params:[id:tag])}
+            })
         })
-    })
 
-</script>
-
+    </script>
+</div>
 </body>
 </html>

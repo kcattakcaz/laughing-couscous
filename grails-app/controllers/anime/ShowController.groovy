@@ -19,28 +19,22 @@ class ShowController {
     def newShowForm() {
         def tags = Tag.list();
         [tags: tags]
-
-        // def saveImage = {
-        //     def file = request.getFile('file').inputStream.text
-        //     file.transferTo(new File('/tmp'))
-        // }
     }
 
     def addShow() {
         def show = new Show(params)
 
-        def servletContext = ServletContextHolder.servletContext
-        def path = servletContext.getRealPath("assets/show_images")
-        //def storagePathDirectory = new File(path)
-
         def f = request.getFile('image')
-        //show.image_path = "${path}/${show.id}.png"
-        //f.transferTo(new File(show.image_path))
-
         show.image = f.bytes
         show.image_type = f.contentType
 
         if (show.save()) {
+//            params.tagIds.each {
+//                def tag = Tag.findById(it)
+//                tag.addToShows(show)
+//                //println tag.name
+//                //show.addToTags(tag)
+//            }
             redirect(action: "index")
         } else {
             def tags = Tag.list()
