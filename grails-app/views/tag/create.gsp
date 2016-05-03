@@ -13,17 +13,15 @@
 </head>
 
 <body>
+<div class="container">
+    <g:form name="createTag" url="[action: 'store', controller: 'tag']">
 
-<g:form name="createTag" url="[action:'store',controller:'tag']">
+        <label class="white" for="name">Tag Name:</label>
+        <g:textField name="name"/>
 
+        <g:submitButton name="Create" value="Create"/>
 
-    <label for="name">Tag Name:</label>
-    <g:textField name="name"/>
-
-    <g:submitButton name="Create" value="Create"/>
-
-
-</g:form>
-
+    </g:form>
+</div>
 </body>
 </html>

@@ -1,9 +1,10 @@
 package anime
 
+import javax.swing.plaf.TableHeaderUI
+
 class Show {
 
-    static hasMany = [tags:Tag, favorites: Favorite]
-    static belongsTo = Tag
+    static hasMany = [tags: Tag, favorites: Favorite, ratings: Rating]
 
     static constraints = {
         name blank: false
@@ -17,21 +18,24 @@ class Show {
         num_episodes blank: false, min:1, max:99999
         approved nullable: true
         tags nullable: true
-        image nullable: true
+        ratings nullable: true
+        rating nullable: true
+        image nullable:true
+        image_type nullable:true
     }
 
-    byte[] image
     String name
     Date start_year
     Date end_year
     String description
     Integer num_episodes
     Boolean approved
-    String tags
+    List<Tag> tags
+    Float rating
+    byte[] image
+    String image_type
 
     static mapping = {
         description column: 'description', sqlType: 'mediumtext'
     }
-
-
 }

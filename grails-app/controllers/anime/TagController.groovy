@@ -18,7 +18,6 @@ class TagController {
         [tag:tag]
     }
 
-
     @Secured(value = "hasRole('ROLE_ADMIN')", httpMethod='GET')
     def create(){
         render(view:"create")
@@ -42,7 +41,6 @@ class TagController {
     def update(){
 
     }
-
 
     @Secured(value="hasRole('ROLE_ADMIN')",httpMethod='DELETE')
     def delete(){

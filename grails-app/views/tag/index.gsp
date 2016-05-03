@@ -13,15 +13,16 @@
 </head>
 
 <body>
+<div class="container white">
+    <h1>Tag Management</h1>
 
-<h1>Tag Management</h1>
+    <g:link action="create"><button id="btn_create" type="button">Create</button></g:link>
 
-<g:link action="create"><button id="btn_create" type="button">Create</button></g:link>
-
-<ul>
-    <g:each var="tag" in="${tags}">
-        <li><g:link action="show" id="${tag.id}">${tag.name}</g:link></li>
-    </g:each>
-</ul>
+    <ul>
+        <g:each var="tag" in="${tags}">
+            <li><g:link action="show" id="${tag.id}">${tag.name}</g:link></li>
+        </g:each>
+    </ul>
+</div>
 </body>
 </html>

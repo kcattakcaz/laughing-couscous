@@ -10,5 +10,4 @@ class Tag {
 
     static hasMany = [shows:Show]
     static belongsTo = Show
-
 }

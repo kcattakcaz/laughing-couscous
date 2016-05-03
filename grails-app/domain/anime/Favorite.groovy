@@ -8,8 +8,6 @@ class Favorite {
     }
 
     Date date
-    //Show show
-    //String username
     static belongsTo = [user: User, show: Show]
 
     Favorite (User u, Show s, Date d) {

@@ -12,4 +12,67 @@
 *= require_self
 */
 
-body { padding-top: 70px; }
+body {
+    padding-top: 70px;
+    background: url("../images/scuffedstatic_dark1400x900.jpg") no-repeat;
+    background-size: 100%;
+}
+
+button:focus {outline:0;}
+
+.white {
+    color: #fff;
+}
+
+.fav_button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    position: relative;
+    top: -6px;
+}
+
+.favorited {
+    color: #ff0002;
+}
+
+.favForm {
+    position: relative;
+    display: inline-block;
+    left: 16px;
+}
+
+.rating {
+    top: -44px;
+    position: relative;
+    left: 145px;
+    font-size: 20px;
+    width: 143px;
+}
+
+.deleteButton {
+    background: none;
+    border: none;
+    font-size: 30px;
+    position: relative;
+    top: -90px;
+    left: 375px;
+}
+
+.star, .starForm {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 1px;
+    color: #ffb900;
+}
+
+.star:hover {
+    color: #fff300;
+}
+
+.showImage {
+    max-width: 300px;
+}

@@ -13,8 +13,9 @@
 </head>
 
 <body>
-<g:if test="${shows}">
-    <g:each var="show" in="${shows}">
+<div class="container">
+    <g:if test="${shows}">
+        <g:each var="show" in="${shows}">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="jumbotron">
@@ -22,21 +23,29 @@
                             <div class="col-xs-8 col-sm-6" style="margin-top: -35px">
                                 <div class="thumbnail">
                                     <img src="http://placehold.it/2500x2000" alt="...">
+
                                     <div class="caption">
-                                        <p><a href="#" class="btn btn-primary" role="button">Favorite</a>  <span style="padding-left: 150px"><a href="#" class="btn btn-default" role="button" >Replace with rating stars</a></span>
+                                        <p><a href="#" class="btn btn-primary" role="button">Favorite</a>  <span
+                                                style="padding-left: 150px"><a href="#" class="btn btn-default"
+                                                                               role="button">Replace with rating stars</a>
+                                        </span>
                                         </p>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-xs-4 col-sm-6" style="margin-top: -35px">
                                 Name: ${show.name}
                             </div>
+
                             <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
-                                Show Start: ${show.start_year}
+                                Show Start: <g:formatDate format="yyyy" date="${show.start_year}"/>
                             </div>
+
                             <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
-                                Show End: ${show.end_year}
+                                Show End: <g:formatDate format="yyyy" date="${show.end_year}"/>
                             </div>
+
                             <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
                                 Number of Episodes: ${show.num_episodes}
                             </div>
@@ -46,23 +55,27 @@
                             </div>
 
                         </div>
+
                         <div class="row">
                             <div class="col-md-12">
                                 Tags: <%--${show.tags.name.join(", ")}--%>
                             </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <g:form controller="show" action="approveShow">
-                                 <g:hiddenField name="id" value="${show.id}" />
-                                    <sec:ifAllGranted roles="ROLE_ADMIN"><td><p align="center"><g:submitButton name="Approve"/></p></td></sec:ifAllGranted>
-                                </g:form>
-                                <g:form controller="show" action="deleteShow">
-                                    <g:hiddenField name="id" value="${show.id}" />
-                                    <sec:ifAllGranted roles="ROLE_ADMIN"><td><p align="center"><g:submitButton name="Delete"/></p></td></sec:ifAllGranted>
-                                </g:form>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <g:form controller="show" action="approveShow">
+                                        <g:hiddenField name="id" value="${show.id}"/>
+                                        <sec:ifAllGranted roles="ROLE_ADMIN"><td><p align="center"><g:submitButton
+                                                name="Approve"/></p></td></sec:ifAllGranted>
+                                    </g:form>
+                                    <g:form controller="show" action="deleteShow">
+                                        <g:hiddenField name="id" value="${show.id}"/>
+                                        <sec:ifAllGranted roles="ROLE_ADMIN"><td><p align="center"><g:submitButton
+                                                name="Delete"/></p></td></sec:ifAllGranted>
+                                    </g:form>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -81,11 +94,11 @@
                 </g:form>
             </tr>
         </table>--%>
-    </g:each>
-</g:if>
-<g:else>
-    <p>No shows currently added. Add a show to the approval list.</p><br/>
-
-</g:else>
+        </g:each>
+    </g:if>
+    <g:else>
+        <p class="white">No shows currently added. Add a show to the approval list.</p><br/>
+    </g:else>
+</div>
 </body>
 </html>
