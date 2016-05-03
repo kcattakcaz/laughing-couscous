@@ -9,5 +9,5 @@ class Tag {
     String name;
 
     static hasMany = [shows:Show]
-    //static belongsTo = Show
+    static belongsTo = Show
 }

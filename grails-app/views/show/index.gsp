@@ -187,7 +187,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            Tags: <%--${show.tags.name.join(", ")}--%>
+                            Tags: ${show.tags.name.join(", ")}
                         </div>
 
                         <div class="col-md-12">

@@ -1,5 +1,7 @@
 package anime
 
+import javax.swing.plaf.TableHeaderUI
+
 class Show {
 
     static hasMany = [tags: Tag, favorites: Favorite, ratings: Rating]
@@ -28,7 +30,7 @@ class Show {
     String description
     Integer num_episodes
     Boolean approved
-    String tags
+    List<Tag> tags
     Float rating
     byte[] image
     String image_type
