@@ -8,79 +8,12 @@
 <%@ page import="anime.Rating; anime.Favorite" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <meta name="layout" content="${gspLayout ?: 'main'}"/>
     <title></title>
-    <meta name="layout" content="main">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <asset:javascript src="index.js"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 
 <body>
-
-<%--<div class="row">
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-    <div class="col-md-1">.col-md-1</div>
-</div>
-<div class="row">
-    <div class="col-md-8">.col-md-8</div>
-    <div class="col-md-4">.col-md-4</div>
-</div>
-<div class="row">
-    <div class="col-md-4">.col-md-4</div>
-    <div class="col-md-4">.col-md-4</div>
-    <div class="col-md-4">.col-md-4</div>
-</div>
-<div class="row">
-    <div class="col-md-6">.col-md-6</div>
-    <div class="col-md-6">.col-md-6</div>
-</div>
-
-<div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-        Level 1: .col-sm-9
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-xs-8 col-sm-6" style="margin-top: -35px">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/750x325" alt="...">
-                        <div class="caption">
-                            <p><a href="#" class="btn btn-primary" role="button">Favorite</a>  <span style="padding-left: 150px"><a href="#" class="btn btn-default" role="button" >Replace with rating stars</a></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-4 col-sm-6" style="margin-top: -35px">
-                    Name: ${show.name}
-                </div>
-
-                <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
-                    Description: <span style="font-size: large">Obviously the best anime ever.</span> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    Tags: Best, Ever, No, Debate, Amazing, Lul, Anime, Kamehameha, Rekt, IDK, Anymore, Tags
-                </div>
-            </div>
-        </div>
-    </div>
-</div>--%>
 <g:if test="${shows}">
     <g:each var="show" in="${shows}">
         <div class="row">

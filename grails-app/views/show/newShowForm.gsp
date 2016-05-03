@@ -13,11 +13,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <asset:stylesheet src="newShow.css"/>
 </head>
 
-<body>
-<div class="container">
+
     <g:uploadForm action="addShow">
         <g:hasErrors bean="${show}">
             <ul>
@@ -27,27 +25,48 @@
             </ul>
         </g:hasErrors>
         <h1>Add New Show</h1>
-        <input type="file" name="image"/>
-        <div class="form_label">Title:</div><g:textField name="name" value="${fieldValue(bean: show, field: 'name')}"/><br/>
-        <div class="form_label">Start Date:</div><g:datePicker name="start_year" value="${new Date()}"
-                                          noSelection="['': '-Choose-']" precision="year"/><br/>
-        <div class="form_label">End Date:</div><g:datePicker name="end_year" value="${new Date()}"
-                                          noSelection="['': '-Choose-']" precision="year"/><br/>
-        <div class="form_label description_label">Show Description:</div><g:textArea name="description"
-                                        value="${fieldValue(bean: show, field: 'description')}"/><br/>
-        <div class="form_label">Number of Episodes:</div><g:textField name="num_episodes"
-                                         value="${fieldValue(bean: show, field: 'num_episodes')}"/><br/>
-        <div class="form_label tag_label">Tags:</div>
-        <g:select name="tagIds" from="${tags}" value="${tags}" controller="Tag" optionKey="id" optionValue="name">
+        <div class="form-group">
+            <label>Title:</label>
+            <g:textField name="name" class="form-control" value="${fieldValue(bean: show, field: 'name')}"/>
+        </div>
+        <div class="form-group">
+            <label>Start Date:</label>
+        <g:datePicker class="form-control" name="start_year" value="${new Date()}" noSelection="['': '-Choose-']" precision="year"/>
+        </div>
 
-        </g:select>
-        <br/>
+        <div class="form-group">
+            <label>End Date:</label>
+        <g:datePicker class="form-control" name="end_year" value="${new Date()}" noSelection="['': '-Choose-']" precision="year"/>
+        </div>
+
+        <div class="form-group">
+        <label>Show Description:</label>
+            <g:textArea class="form-control" name="description" value="${fieldValue(bean: show, field: 'description')}"/>
+        </div>
+
+        <div class="form-group">
+            <label>Cover Image:</label>
+            <input type="file" name="image"/>
+        </div>
+        <div class="form-group">
+            <label>Number of Episodes:</label>
+        <g:textField name="num_episodes" class="form-control" value="${fieldValue(bean: show, field: 'num_episodes')}"/>
+        </div>
+
+        <div class="form-group">
+            <label>Tags:</label>
+            <g:select class="form-control" name="tagIds" from="${tags}" value="${tags}" controller="Tag" optionKey="id" optionValue="name"/>
+        </div>
+
         <g:hiddenField name="approved" value="false"/>
-        <g:submitButton class="submitButton btn" name="Submit"/>
+        <div class="form-group">
+            <g:submitButton class="submitButton btn" name="Submit"/>
+        </div>
+
         %{--<g:actionSubmit class="submitButton" value="Cancel" action="homepage"/>--}%
     </g:uploadForm>
 
-</div>
+
 
 </body>
 </html>
