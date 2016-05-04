@@ -30,7 +30,6 @@ class Show {
     String description
     Integer num_episodes
     Boolean approved
-    List<Tag> tags
     Float rating
     byte[] image
     String image_type

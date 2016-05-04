@@ -134,8 +134,20 @@ class ShowController {
     }
 
     def search(){
-        def shows = Show.findAllByNameIlike("%" + params.search + "%")
-        [shows: shows]
+        def searchShows = Show.withCriteria() {
+            ilike('name', "%" + params.search + "%")
+        }
+
+
+        def searchTags = Show.withCriteria() {
+
+            tags{
+                ilike('name', "%" + params.search + "%")
+            }
+        }
+
+        [shows: searchShows, tags: searchTags]
+
     }
 
 
