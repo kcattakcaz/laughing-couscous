@@ -20,12 +20,58 @@
 
     <div class="row">
         <g:form class="searchbox" action="search">
-            <g:textField placeholder="Search" name="search"/>
-            <button type="submit" value="Search"><span class="glyphicon glyphicon-search"/></button>
+            <div class="input-group">
+            <g:textField class="form-control" placeholder="Search" name="search"/>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default" value="Search"><span class="glyphicon glyphicon-search"/></button>
+                </span>
+            </div>
         </g:form>
     </div>
 
+
     <div class="row">
+        <g:if test="${shows}">
+            <g:each var="show" in="${shows}">
+
+
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="https://placehold.it/100x100" alt="...">
+                            <div id="ratings_${show.id}" class="star5">
+                                <input <g:if test="${show.rating && show.rating >= 1}">checked</g:if> type="radio" name="example" class="rating" value="1" />
+                                <input <g:if test="${show.rating && show.rating >= 2}">checked</g:if> type="radio" name="example" class="rating" value="2" />
+                                <input <g:if test="${show.rating && show.rating >= 3}">checked</g:if> type="radio" name="example" class="rating" value="3" />
+                                <input <g:if test="${show.rating && show.rating >= 4}">checked</g:if> type="radio" name="example" class="rating" value="4" />
+                                <input <g:if test="${show.rating && show.rating >= 5}">checked</g:if> type="radio" name="example" class="rating" value="5" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <g:link action="showDisplay" params="[id:show.id]" ><h2 class="media-heading">${show.name}</h2></g:link>
+                        ${show.description}
+                    </div>
+                </div>
+
+                <script>
+                    $('#ratings_${show.id}').rating(function(vote, event){
+                        // write your ajax code here
+                        // For example;
+                        console.log(vote);
+                        $.post("<g:createLink action="rate" controller="show" />", {id: ${show.id}, star:vote});
+                    });
+                </script>
+
+            </g:each>
+        </g:if>
+        <g:else>
+            <p class="white">No shows currently added. Add a show to the approval list.</p><br/>
+        </g:else>
+    </div>
+
+
+   <!-- <div class="row">
         <g:if test="${shows}">
             <g:each var="show" in="${shows}">
                 <div class="well well-lg">
@@ -130,7 +176,7 @@
         </g:else>
     </div>
 </div>
-
+-->
 
 <%--
 <g:if test="${shows}">
@@ -275,5 +321,7 @@
 
 </g:else>
 --%>
+
+
 </body>
 </html>

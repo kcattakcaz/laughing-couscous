@@ -9,10 +9,12 @@
         <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css"
         <asset:stylesheet src="style.css"/>
         <asset:stylesheet src="selectize.css"/>
+        <asset:stylesheet src="rating.css"/>
         <asset:javascript src="jquery-2.1.3.js"/>
         <asset:javascript src="application.js"/>
         <asset:javascript src="bootstrap.min.js"/>
         <asset:javascript src="selectize.min.js"/>
+        <asset:javascript src="rating.js"/>
         <g:layoutHead/>
     </head>
     <body>
