@@ -17,24 +17,15 @@
     <g:if test="${shows}">
         <g:each var="show" in="${shows}">
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="jumbotron">
-                        <div class="row">
-                            <div class="col-xs-8 col-sm-6" style="margin-top: -35px">
-                                <div class="thumbnail">
-                                    <img src="http://placehold.it/2500x2000" alt="...">
-
-                                    <div class="caption">
-                                        <p><a href="#" class="btn btn-primary" role="button">Favorite</a>  <span
-                                                style="padding-left: 150px"><a href="#" class="btn btn-default"
-                                                                               role="button">Replace with rating stars</a>
-                                        </span>
-                                        </p>
-                                    </div>
-                                </div>
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/2500x2000" alt="...">
                             </div>
+                        </div>
 
-                            <div class="col-xs-4 col-sm-6" style="margin-top: -35px">
+                            <div class="col-xs-4">
                                 Name: ${show.name}
                             </div>
 
@@ -58,14 +49,14 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                Tags: <%--${show.tags.name.join(", ")}--%>
+                                Tags: ${show.tags.name.join(", ")}
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <g:form controller="show" action="approveShow">
                                         <g:hiddenField name="id" value="${show.id}"/>
-                                        <sec:ifAllGranted roles="ROLE_ADMIN"><td><p align="center"><g:submitButton
+                                        <sec:ifAllGranted roles="ROLE_ADMIN"><td><p><g:submitButton
                                                 name="Approve"/></p></td></sec:ifAllGranted>
                                     </g:form>
                                     <g:form controller="show" action="deleteShow">
@@ -77,7 +68,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         <%-- Saving for now, can be deleted later </g:form>
         <table border="1px">
