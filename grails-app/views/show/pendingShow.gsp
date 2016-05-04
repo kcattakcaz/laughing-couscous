@@ -16,79 +16,86 @@
 <div class="container">
     <g:if test="${shows}">
         <g:each var="show" in="${shows}">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+            <div class="well well-lg">
                     <div class="row">
-                        <div class="col-xs-8 col-sm-6">
+                        <h2>${show.name} <small><g:formatDate format="yyyy" date="${show.start_year}"/> - <g:formatDate format="yyyy" date="${show.end_year}"/></small></h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
                             <div class="thumbnail">
                                 <img src="http://placehold.it/2500x2000" alt="...">
                             </div>
                         </div>
 
-                            <div class="col-xs-4">
-                                Name: ${show.name}
-                            </div>
 
-                            <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
-                                Show Start: <g:formatDate format="yyyy" date="${show.start_year}"/>
-                            </div>
-
-                            <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
-                                Show End: <g:formatDate format="yyyy" date="${show.end_year}"/>
-                            </div>
-
-                            <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
-                                Number of Episodes: ${show.num_episodes}
-                            </div>
-
-                            <div class="col-xs-4 col-sm-6" style="margin-top: 5px">
-                                Description: ${show.description}
-                            </div>
-
+                        <div class="col-xs-4">
+                            Number of Episodes: ${show.num_episodes}
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                Tags: ${show.tags.name.join(", ")}
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <g:form controller="show" action="approveShow">
-                                        <g:hiddenField name="id" value="${show.id}"/>
-                                        <sec:ifAllGranted roles="ROLE_ADMIN"><td><p><g:submitButton
-                                                name="Approve"/></p></td></sec:ifAllGranted>
-                                    </g:form>
-                                    <g:form controller="show" action="deleteShow">
-                                        <g:hiddenField name="id" value="${show.id}"/>
-                                        <sec:ifAllGranted roles="ROLE_ADMIN"><td><p align="center"><g:submitButton
-                                                name="Delete"/></p></td></sec:ifAllGranted>
-                                    </g:form>
-                                </div>
-                            </div>
+                        <div class="col-xs-4">
+                            Description: ${show.description}
                         </div>
+
+                        <div class="col-xs-4">
+                            Tags: ${show.tags.name.join(", ")}
+                        </div>
+
+                        <div class="col-xs-12">
+                            <sec:ifAllGranted roles="ROLE_ADMIN">
+                                <button type="button" class="btn btn-primary btn-block" onclick="approveShow('${show.id}')">Approve</button>
+                                <button type="button" class="btn btn-danger btn-block" onclick="deleteShow('${show.id}')">Delete</button>
+                            </sec:ifAllGranted>
+                        </div>
+
                     </div>
             </div>
-        <%-- Saving for now, can be deleted later </g:form>
-        <table border="1px">
-            <tr>
-                <g:form controller="show" action="deleteShow">
-                    <td>${show.name}</td>
-                    <td><g:formatDate format="yyyy" date="${show.start_year}"/></td>
-                    <td><g:formatDate format="yyyy" date="${show.end_year}"/> </td>
-                    <td>${show.description}</td>
-                    <td>${show.num_episodes}</td>
-                    <td>${show.tags.name.join(", ")}</td>
-                    <g:hiddenField name="id" value="${show.id}" />
-                    <sec:ifAllGranted roles="ROLE_ADMIN"><td><p align="center"><g:submitButton name="Delete"/></p></td></sec:ifAllGranted>
-                </g:form>
-            </tr>
-        </table>--%>
         </g:each>
     </g:if>
     <g:else>
         <p class="white">No shows currently added. Add a show to the approval list.</p><br/>
     </g:else>
 </div>
+
+<script>
+    function approveShow(showID){
+        $.post(
+                "<g:createLink action="approveShow" controller="show"/>",
+                {
+                    id:showID
+                }
+
+        )
+                .done(function (data) {
+                    console.log(data);
+                    if(data.status == true){
+                        location.reload();
+                    }
+                })
+                .fail(function (data) {
+                    alert("Failed to approve the show");
+                });
+    }
+
+    function deleteShow(showID){
+        $.post(
+                "<g:createLink action="deleteShow" controller="show"/>",
+                {
+                    id:showID
+                }
+
+                )
+                .done(function (data) {
+                    console.log(data);
+                    if(data.status == true){
+                        location.reload();
+                    }
+                })
+                .fail(function (data) {
+                    alert("Failed to delete the show");
+                });
+    }
+</script>
+
 </body>
 </html>

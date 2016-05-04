@@ -78,8 +78,17 @@ class ShowController {
     def approveShow() {
         def s = Show.get(params.id)
         s.approved = true
-        s.save()
-        redirect(action: "index")
+        if(s.save()){
+            render(contentType: 'text/json') {[
+                    'status': true
+            ]}
+        }
+        else{
+            render(contentType: 'text/json') {[
+                    'status': false
+            ]}
+        }
+        //redirect(action: "index")
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
