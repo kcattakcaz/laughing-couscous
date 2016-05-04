@@ -1,8 +1,17 @@
 .starbutton{
-    background-color:#FFF !important;
+    background-color:#ECF0F1 !important;
     border:none !important;
 }
 
 .starStyle{
     display:inline;
+}
+
+.searchbox{
+    background-color: #ECF0F1;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 0.2em;
+    float: right;
 }

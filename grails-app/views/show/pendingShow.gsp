@@ -22,9 +22,9 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-xs-4">
                             <div class="thumbnail">
-                                <img src="http://placehold.it/2500x2000" alt="...">
+                                <img class="showImage" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
                             </div>
                         </div>
 
