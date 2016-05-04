@@ -98,8 +98,8 @@
             </div>
             <div class="well well-lg">
                 <g:form action="addReview">
-                    <g:hiddenField name="id" value="show.id"/>
-                    <g:hiddenField name="showName" value="show.name"/>
+                    <g:hiddenField name="id" value="${show.id}"/>
+                    <g:hiddenField name="showName" value="${show.name}"/>
                     <div class="form-group">
                         <h3>Leave a Review</h3>
                         <g:textArea class="reviewArea" name="text"/>
@@ -109,6 +109,7 @@
             </div>
                 <g:each var="reviews" in="${reviews}">
                     <div class="well well-lg">
+                        <p> inside</p>
                         <p>${reviews.text}</p>
                     </div>
                 </g:each>
