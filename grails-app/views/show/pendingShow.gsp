@@ -17,38 +17,42 @@
     <g:if test="${shows}">
         <g:each var="show" in="${shows}">
             <div class="well well-lg">
+                <div class="container-fluid">
                     <div class="row">
-                        <h2>${show.name} <small><g:formatDate format="yyyy" date="${show.start_year}"/> - <g:formatDate format="yyyy" date="${show.end_year}"/></small></h2>
+                        <h1>${show.name} <small><g:formatDate format="yyyy" date="${show.start_year}"/> - <g:formatDate format="yyyy" date="${show.end_year}"/></small></h1>
                     </div>
 
                     <div class="row">
-                        <div class="col-xs-4">
-                            <div class="thumbnail">
-                                <img class="showImage" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="thumbnail col-xs-4">
+                                    <img class="showImage" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                Number of Episodes: ${show.num_episodes}
+                            </div>
+
+                            <div class="row">
+                                Description: ${show.description}
+                            </div>
+
+                            <div class="row">
+                                Tags: ${show.tags.name.join(", ")}
+                            </div>
+
+                            <div class="row">
+                                <sec:ifAllGranted roles="ROLE_ADMIN">
+                                    <button type="button" class="btn btn-primary col-xs-12 col-md-5" onclick="approveShow('${show.id}')">Approve</button>
+                                    <button type="button" class="btn btn-danger col-xs-12 col-md-offset-2 col-md-5" onclick="deleteShow('${show.id}')">Delete</button>
+                                </sec:ifAllGranted>
                             </div>
                         </div>
 
-
-                        <div class="col-xs-4">
-                            Number of Episodes: ${show.num_episodes}
-                        </div>
-
-                        <div class="col-xs-4">
-                            Description: ${show.description}
-                        </div>
-
-                        <div class="col-xs-4">
-                            Tags: ${show.tags.name.join(", ")}
-                        </div>
-
-                        <div class="col-xs-12">
-                            <sec:ifAllGranted roles="ROLE_ADMIN">
-                                <button type="button" class="btn btn-primary btn-block" onclick="approveShow('${show.id}')">Approve</button>
-                                <button type="button" class="btn btn-danger btn-block" onclick="deleteShow('${show.id}')">Delete</button>
-                            </sec:ifAllGranted>
-                        </div>
-
                     </div>
+                </div>
             </div>
         </g:each>
     </g:if>
