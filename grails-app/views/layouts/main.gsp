@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <asset:stylesheet src="bootstrap.min.css"/>
+        <asset:stylesheet src="style.css"/>
         <asset:javascript src="jquery-2.1.3.js"/>
         <asset:javascript src="application.js"/>
         <asset:javascript src="bootstrap.min.js"/>
