@@ -18,11 +18,9 @@
 
     <g:link action="create"><button id="btn_create" type="button">Create</button></g:link>
 
-    <ul>
-        <g:each var="tag" in="${tags}">
-            <li><g:link action="show" id="${tag.id}">${tag.name}</g:link></li>
-        </g:each>
-    </ul>
+    <g:each var="tag" in="${tags}">
+        <li><g:link action="show" id="${tag.id}">${tag.name}</g:link></li>
+    </g:each>
 </div>
 </body>
 </html>

@@ -96,6 +96,22 @@
 
                 </div>
             </div>
+            <div class="well well-lg">
+                <g:form action="addReview">
+                    <g:hiddenField name="id" value="show.id"/>
+                    <g:hiddenField name="showName" value="show.name"/>
+                    <div class="form-group">
+                        <h3>Leave a Review</h3>
+                        <g:textArea class="reviewArea" name="text"/>
+                    </div>
+                    <g:submitButton name="Submit" class="submitButton btn"/>
+                </g:form>
+            </div>
+                <g:each var="reviews" in="${reviews}">
+                    <div class="well well-lg">
+                        <p>${reviews.text}</p>
+                    </div>
+                </g:each>
         </g:each>
     </g:if>
 

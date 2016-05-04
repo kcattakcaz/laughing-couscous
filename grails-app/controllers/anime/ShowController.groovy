@@ -193,6 +193,20 @@ class ShowController {
 
     def showDisplay(){
         def shows = Show.findById(params.id)
-        [shows:shows]
+        def reviews = Review.findAllByShowName(params.showName)
+        [shows:shows, reviews:reviews]
+    }
+
+    def addComment(){
+        def comment = new Comment(params)
+        comment.save()
+        redirect(action:"showDisplay")
+    }
+
+    def addReview(){
+        def user = springSecurityService.getCurrentUser()
+        def review = new Review(user,params.showName,params.text)
+        review.save()
+        redirect(uri: request.getHeader('referer'))
     }
 }
