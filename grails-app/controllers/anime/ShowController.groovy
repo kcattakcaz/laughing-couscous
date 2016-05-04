@@ -146,7 +146,37 @@ class ShowController {
             }
         }
 
-        [shows: searchShows, tags: searchTags]
+
+
+        //Remove duplicates
+        def shows = []
+        for(int i; i<searchShows.size();i++){
+            if(!shows.contains(searchShows[i])){
+                shows.add(searchShows[i])
+                println(searchShows[i])
+            }
+        }
+        def tags = []
+        for(int i; i<searchTags.size();i++){
+            if(!tags.contains(searchTags[i])){
+                tags.add(searchTags[i])
+                println(searchTags[i])
+            }
+        }
+
+        //Remove overlaps
+        for(int i; i<tags.size();i++){
+            if(shows.contains(tags[i])){
+                tags.remove(i)
+            }
+        }
+        for(int i; i<shows.size();i++){
+            if(tags.contains(shows[i])){
+                shows.remove(i)
+            }
+        }
+
+        [shows: shows, tags: tags]
 
     }
 
