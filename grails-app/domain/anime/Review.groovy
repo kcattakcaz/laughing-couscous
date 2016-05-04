@@ -4,16 +4,15 @@ import com.Anime.User
 
 class Review {
 
-    static belongsTo = [user: User]
+    static belongsTo = [user: User, show: Show]
     static constraints = {
     }
 
-    String showName
     String text
 
-    Review(User u, String s, String t){
+    Review(User u, Show s, String t){
         user = u
-        showName = s
+        show = s
         text = t
     }
 }
