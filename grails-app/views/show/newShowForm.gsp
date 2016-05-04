@@ -61,7 +61,7 @@
 
         <g:hiddenField name="approved" value="false"/>
         <div class="form-group">
-            <g:submitButton class="submitButton btn" name="Submit"/>
+            <g:submitButton class="btn btn-info" name="Submit"/>
         </div>
 
         %{--<g:actionSubmit class="submitButton" value="Cancel" action="homepage"/>--}%
