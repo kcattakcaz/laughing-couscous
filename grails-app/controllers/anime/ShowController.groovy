@@ -2,8 +2,10 @@ package anime
 
 import com.Anime.User
 import grails.plugin.springsecurity.annotation.Secured
+import grails.transaction.Transactional
 import grails.web.context.ServletContextHolder
 
+@Transactional(readOnly = false)
 class ShowController {
 
     def springSecurityService

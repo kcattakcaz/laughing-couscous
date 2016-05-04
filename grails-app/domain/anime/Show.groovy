@@ -36,5 +36,6 @@ class Show {
 
     static mapping = {
         description column: 'description', sqlType: 'mediumtext'
+        image sqlType: 'blob'
     }
 }
