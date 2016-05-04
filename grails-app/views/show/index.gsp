@@ -38,7 +38,7 @@
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object" src="https://placehold.it/100x100" alt="...">
+                            <img height="auto" width="100px" class="media-object" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
                             <div id="ratings_${show.id}" class="star5">
                                 <input <g:if test="${show.rating && show.rating >= 1}">checked</g:if> type="radio" name="example" class="rating" value="1" />
                                 <input <g:if test="${show.rating && show.rating >= 2}">checked</g:if> type="radio" name="example" class="rating" value="2" />
