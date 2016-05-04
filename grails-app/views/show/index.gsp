@@ -24,7 +24,7 @@
             <button type="submit" value="Search"><span class="glyphicon glyphicon-search"/></button>
         </g:form>
     </div>
-    
+
     <div class="row">
         <g:if test="${shows}">
             <g:each var="show" in="${shows}">

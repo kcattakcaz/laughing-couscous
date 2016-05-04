@@ -26,8 +26,9 @@
         </g:hasErrors>
         <h1>Add New Show</h1>
         <div class="form-group">
-            <label>Title:</label>
-            <g:textField name="name" class="form-control" value="${fieldValue(bean: show, field: 'name')}"/>
+            <label for="name-input">Title:</label>
+            <select id="name-input" name="name" class="" value="${fieldValue(bean: show, field: 'name')}">
+                </select>
         </div>
         <div class="form-group">
             <label>Start Date:</label>
@@ -66,6 +67,66 @@
         %{--<g:actionSubmit class="submitButton" value="Cancel" action="homepage"/>--}%
     </g:uploadForm>
 
+
+
+<script>
+
+    $.post("https://anilist.co/api/auth/access_token",{
+        grant_type: "client_credentials",
+        client_id:"kcattakcaz-mwhod",
+        client_secret: "so64ruvpOKILdbkesIhSmUWQGK"
+    })
+            .done(function(data){
+                console.log("success");
+                console.log(data);
+
+
+                $('#name-input').selectize({
+                    valueField: 'title_english',
+                    labelField: 'title_english',
+                    searchField: 'title_english',
+                    create: true,
+                    render: {
+                        option: function(item, escape) {
+                            return '<div>' +
+                                    '<span class="title">' +
+                                    '<span class="name">' +escape(item.title_english) + '</span>' +
+                                    '<span class="by"> (' + escape(item.title_romaji) + ') </span>' +
+                                    '</span>' +
+                                    '<span class="description"> [' + escape(item.title_japanese) + '] </span>' +
+                                    '</div>';
+                        }
+                    },
+                    score: function(search) {
+                        var score = this.getScoreFunction(search);
+                        return function(item) {
+                            return score(item) * (1 + Math.min(item.popularity / 100, 1));
+                        };
+                    },
+                    load: function(query, callback) {
+                        if (!query.length) return callback();
+                        $.ajax({
+                            url: 'https://anilist.co/api/anime/search/' + encodeURIComponent(query),
+                            type: 'GET',
+                            data: {access_token:data.access_token},
+                            error: function() {
+                                callback();
+                            },
+                            success: function(res) {
+                                callback(res);
+                            }
+                        });
+                    }
+                });
+
+            })
+            .fail(function(data){
+                console.log("fail");
+                console.log(data);
+            });
+
+
+</script>
 
 
 </body>

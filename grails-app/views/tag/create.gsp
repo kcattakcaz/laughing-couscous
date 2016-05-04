@@ -16,10 +16,15 @@
 <div class="container">
     <g:form name="createTag" url="[action: 'store', controller: 'tag']">
 
-        <label class="white" for="name">Tag Name:</label>
-        <g:textField name="name"/>
+        <div class="form-group">
+            <label class="white" for="name">Tag Name:</label>
+            <g:textField class="form-control" name="name"/>
+        </div>
 
-        <g:submitButton name="Create" value="Create"/>
+        <div class="form-group">
+            <g:submitButton class="btn btn-success" name="Create" value="Create"/>
+        </div>
+
 
     </g:form>
 </div>
