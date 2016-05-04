@@ -128,7 +128,7 @@ class ShowController {
         }
         show.rating = total / show.ratings.size()
         show.save()
-        redirect(action: "index")
+        redirect(uri: request.getHeader('referer'))
     }
 
     def show_image() {

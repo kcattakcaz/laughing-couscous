@@ -30,13 +30,26 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                         <div class="thumbnail">
-                            <img class="showImage" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
+                            <img class="showImage imageStyle" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
                         </div>
                     </div>
 
                     <div class=" col-xs-12 rating align" data-toggle="tooltip" title="${user && Rating.findByShowAndUser(show, user) ? "Overall rating: " + show.rating + ", Your rating: " + Rating.findByShowAndUser(show, user).stars.toFloat() : show.rating ? "Overall rating: " + show.rating : "No current ratings"}">
+                        <g:if test="${Favorite.findByUserAndShow(user, show)}">
+                            <g:form class="favForm" controller="show" action="deleteFavorite">
+                                <g:hiddenField name="id" value="${show.id}"/>
+                                <sec:ifAnyGranted  roles="ROLE_ADMIN,ROLE_USER"><button type="submit" class="fav_button favorited starbutton"><span class="glyphicon glyphicon-heart"></span></button></sec:ifAnyGranted>
+                            </g:form>
+                        </g:if>
+                        <g:else>
+                            <g:form class="favForm" controller="show" action="addFavorite">
+                                <g:hiddenField name="id" value="${show.id}"/>
+                                <sec:ifAnyGranted  roles="ROLE_ADMIN,ROLE_USER"><button type="submit" class="fav_button starbutton"><span class="glyphicon glyphicon-heart"></span></button></sec:ifAnyGranted>
+                            </g:form>
+                        </g:else>
+
                         <g:form class="starForm starStyle" controller="show" action="rate">
                             <g:hiddenField name="star" value="1"/>
                             <g:hiddenField name="id" value="${show.id}"/>

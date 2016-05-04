@@ -1,3 +1,4 @@
+
 .tab {
     position: relative;
     display: inline-block;
@@ -22,6 +23,7 @@ button:focus {outline:0;}
 
 .info {
     border: 2px solid #9b9b9b;
+    border-radius: 0px !important;
     top: -2px;
     position: relative;
     padding: 10px;
@@ -35,7 +37,7 @@ button:focus {outline:0;}
 
 .fav {
     border-bottom: 1px solid #afafaf;
-    padding: 10px;
+    padding: 2em;
     position: relative;
 }
 

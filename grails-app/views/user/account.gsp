@@ -8,9 +8,9 @@
 <%@ page import="anime.Favorite; anime.Rating" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="main">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <meta name="layout" content="${gspLayout ?: 'main'}"/>
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">--%>
     <asset:javascript src="account.js"/>
     <asset:stylesheet href="account.css"/>
     <title>Account Profile</title>
@@ -28,7 +28,7 @@
         <div class="user_info">Email:</div> ${user.email}
     </div>
 
-    <div class="info info_favorites">
+    <div class="well well-lg info info_favorites">
         <g:if test="${favorites}">
             <g:each var="fav" in="${favorites}">
                 <div class="fav">
@@ -46,73 +46,57 @@
                 </div>
 
                 <div class="other_info">
-                    <g:if test="${Favorite.findByUserAndShow(user, fav.show)}">
-                        <g:form class="favoriteForm" controller="show" action="deleteFavorite">
-                            <g:hiddenField name="id" value="${fav.show.id}"/>
-                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_USER"><button type="submit"
-                                                                                   class="fav_button favorited"><span
-                                        class="glyphicon glyphicon-heart"></span></button></sec:ifAnyGranted>
-                        </g:form>
-                    </g:if>
-                    <g:else>
-                        <g:form class="favForm" controller="show" action="addFavorite">
-                            <g:hiddenField name="id" value="${fav.show.id}"/>
-                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_USER"><button type="submit"
-                                                                                   class="fav_button"><span
-                                        class="glyphicon glyphicon-heart"></span></button></sec:ifAnyGranted>
-                        </g:form>
-                    </g:else>
 
                     <div class="rating" data-toggle="tooltip"
                          title="${user && Rating.findByShowAndUser(fav.show, user) ? "Overall rating: " + fav.show.rating + ", Your rating: " + Rating.findByShowAndUser(fav.show, user).stars.toFloat() : fav.show.rating ? "Overall rating: " + fav.show.rating : "No current ratings"}">
-                        <g:form class="starForm" controller="show" action="rate">
+                        <g:form class="starForm starStyle" controller="show" action="rate">
                             <g:hiddenField name="star" value="1"/>
                             <g:hiddenField name="id" value="${fav.show.id}"/>
                             <g:if test="${fav.show.rating && fav.show.rating >= 1}">
-                                <button class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
                             </g:if>
                             <g:else>
-                                <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
                             </g:else>
                         </g:form>
-                        <g:form class="starForm" controller="show" action="rate">
+                        <g:form class="starForm starStyle" controller="show" action="rate">
                             <g:hiddenField name="star" value="2"/>
                             <g:hiddenField name="id" value="${fav.show.id}"/>
                             <g:if test="${fav.show.rating && fav.show.rating >= 2}">
-                                <button class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
                             </g:if>
                             <g:else>
-                                <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
                             </g:else>
                         </g:form>
-                        <g:form class="starForm" controller="show" action="rate">
+                        <g:form class="starForm starStyle" controller="show" action="rate">
                             <g:hiddenField name="star" value="3"/>
                             <g:hiddenField name="id" value="${fav.show.id}"/>
                             <g:if test="${fav.show.rating && fav.show.rating >= 3}">
-                                <button class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
                             </g:if>
                             <g:else>
-                                <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
                             </g:else>
                         </g:form>
-                        <g:form class="starForm" controller="show" action="rate">
+                        <g:form class="starForm starStyle" controller="show" action="rate">
                             <g:hiddenField name="star" value="4"/>
                             <g:hiddenField name="id" value="${fav.show.id}"/>
                             <g:if test="${fav.show.rating && fav.show.rating >= 4}">
-                                <button class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
                             </g:if>
                             <g:else>
-                                <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
                             </g:else>
                         </g:form>
-                        <g:form class="starForm" controller="show" action="rate">
+                        <g:form class="starForm starStyle" controller="show" action="rate">
                             <g:hiddenField name="star" value="5"/>
                             <g:hiddenField name="id" value="${fav.show.id}"/>
                             <g:if test="${fav.show.rating && fav.show.rating >= 5}">
-                                <button class="star"><span class="glyphicon glyphicon-star"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
                             </g:if>
                             <g:else>
-                                <button class="star"><span class="glyphicon glyphicon-star-empty"></span></button>
+                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
                             </g:else>
                         </g:form>
                     </div>
