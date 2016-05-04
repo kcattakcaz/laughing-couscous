@@ -4,7 +4,7 @@ import javax.swing.plaf.TableHeaderUI
 
 class Show {
 
-    static hasMany = [tags: Tag, favorites: Favorite, ratings: Rating]
+    static hasMany = [tags: Tag, favorites: Favorite, ratings: Rating, reviews: Review]
 
     static constraints = {
         name blank: false

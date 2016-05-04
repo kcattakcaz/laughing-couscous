@@ -26,17 +26,12 @@ class ShowController {
     def addShow() {
         def show = new Show(params)
 
-        if (params.tagIds instanceof java.lang.String)
-        {
-            def t = Tag.findByName(params.tagIds);
-            show.addToTags(t);
-        }
-        else {
+
             params.tagIds.each {
                 def t = Tag.findById(it);
                 show.addToTags(t);
             }
-        }
+
 
         def f = request.getFile('image')
         show.image = f.bytes
