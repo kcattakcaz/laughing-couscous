@@ -132,4 +132,11 @@ class ShowController {
         out.write(show.image)
         out.close()
     }
+
+    def search(){
+        def shows = Show.findAllByNameIlike("%" + params.search + "%")
+        [shows: shows]
+    }
+
+
 }

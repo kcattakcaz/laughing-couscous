@@ -14,6 +14,11 @@
 </head>
 
 <body>
+<g:form action="search">
+    <g:textField name="search" value="search"/>
+    <button type="submit" value="Search"></button>
+</g:form>
+
 <g:if test="${shows}">
     <g:each var="show" in="${shows}">
         <div class="row">
