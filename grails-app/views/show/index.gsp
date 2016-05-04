@@ -30,7 +30,10 @@
             <g:each var="show" in="${shows}">
                 <div class="well well-lg">
                     <div class="row">
-                        <h2>${show.name} <small><g:formatDate format="yyyy" date="${show.start_year}"/> - <g:formatDate format="yyyy" date="${show.end_year}"/></small></h2>
+                        <g:form action="showDisplay">
+                            <g:hiddenField name="id" value="${show.id}" />
+                            <h2><button class="starbutton">${show.name}</button> <small><g:formatDate format="yyyy" date="${show.start_year}"/> - <g:formatDate format="yyyy" date="${show.end_year}"/></small></h2>
+                        </g:form>
                     </div>
 
                     <div class="row">

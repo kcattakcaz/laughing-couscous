@@ -191,5 +191,8 @@ class ShowController {
 
     }
 
-
+    def showDisplay(){
+        def shows = Show.findById(params.id)
+        [shows:shows]
+    }
 }
