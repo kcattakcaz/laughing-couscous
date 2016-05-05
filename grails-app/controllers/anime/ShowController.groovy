@@ -13,7 +13,7 @@ class ShowController {
 
     @Secured(['permitAll'])
     def index() {
-        def shows = Show.findAllByApproved(true)
+        def shows = Show.findAllByApproved(true) //Find all approved shows to display on homepage
         [shows: shows, user: springSecurityService.getCurrentUser()]
     }
 
@@ -29,7 +29,7 @@ class ShowController {
 
             params.tagIds.each {
                 def t = Tag.findById(it);
-                show.addToTags(t);
+                show.addToTags(t); //Add the tags to the show
             }
 
 
@@ -38,13 +38,7 @@ class ShowController {
         show.image_type = f.contentType
 
         if (show.save()) {
-//            params.tagIds.each {
-//                def tag = Tag.findById(it)
-//                tag.addToShows(show)
-//                //println tag.name
-//                //show.addToTags(tag)
-//            }
-            redirect(action: "index")
+            redirect(action: "index") //redirect user if show is added successfully
         } else {
             def tags = Tag.list()
             render(view: "newShowForm", model: [show: show, tags: tags])
@@ -66,13 +60,13 @@ class ShowController {
     }
 
     def pendingShow() {
-        def shows = Show.findAllByApproved(false)
+        def shows = Show.findAllByApproved(false)  //Find the shows awaiting moderators approval
         [shows: shows]
     }
 
     def approveShow() {
         def s = Show.get(params.id)
-        s.approved = true
+        s.approved = true  //Change the approval status of a show to approved and update it in the database
         if(s.save()){
             render(contentType: 'text/json') {[
                     'status': true
@@ -83,14 +77,13 @@ class ShowController {
                     'status': false
             ]}
         }
-        //redirect(action: "index")
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def addFavorite() {
         def user = springSecurityService.getCurrentUser()
         def show = Show.findById(params.id.toInteger())
-        new Favorite(user, show, new Date()).save()
+        new Favorite(user, show, new Date()).save() //Save the selected show to the current users favorites
         redirect(action: "index")
     }
 
@@ -98,7 +91,7 @@ class ShowController {
     def deleteFavorite() {
         def user = springSecurityService.getCurrentUser()
         def show = Show.findById(params.id.toInteger())
-        def fav = Favorite.findByUserAndShow(user, show)
+        def fav = Favorite.findByUserAndShow(user, show) //Find the favorited show in the users favorites list for deletion
         fav.delete()
         redirect(action: "index")
     }
@@ -127,7 +120,7 @@ class ShowController {
     }
 
     def show_image() {
-        def show = Show.get(params.id)
+        def show = Show.get(params.id) //Get the show the image is being uploaded for
         if (!show || !show.image || !show.image_type) {
             response.sendError(404)
             return
@@ -141,12 +134,12 @@ class ShowController {
 
     def search(){
         def searchShows = Show.withCriteria() {
-            ilike('name', "%" + params.search + "%")
+            ilike('name', "%" + params.search + "%") //Find all show titles containing search params
         }
 
         def searchTags = Show.withCriteria() {
             tags{
-                ilike('name', "%" + params.search + "%")
+                ilike('name', "%" + params.search + "%") //Find all shows containing tags fiting the search params
             }
         }
 
@@ -183,29 +176,29 @@ class ShowController {
     }
 
     def showDisplay(){
-        def shows = Show.findById(params.id)
-        def reviews = Review.findByShow(shows)
+        def shows = Show.findById(params.id) //Find selected show
+        def reviews = Review.findByShow(shows) //Find reviews for selected show
         println(reviews)
         [show:shows, reviews:reviews]
     }
 
     def addComment(){
-        def user = springSecurityService.getCurrentUser()
-        user.addPoints(5)
+        def user = springSecurityService.getCurrentUser() //Find user
+        user.addPoints(5) //Add points for commenting
         user.addComment()
         user.save()
         def comment = new Comment(params)
-        comment.save()
+        comment.save() //Add and save comment
         redirect(action:"showDisplay")
     }
 
     def addReview(){
-        def user = springSecurityService.getCurrentUser()
-        user.addPoints(10)
+        def user = springSecurityService.getCurrentUser() //Find the current user
+        user.addPoints(10) //Add points for reviewing a show
         user.addReview()
         user.save()
-        def shows = Show.findById(params.showID)
-        def review = new Review(user,shows,params.reviewText)
+        def shows = Show.findById(params.showID) //Find show review is being written on
+        def review = new Review(user,shows,params.reviewText) //Add show review
         println(user.id)
         println(shows.name)
         println(params.reviewText)

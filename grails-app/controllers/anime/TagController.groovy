@@ -6,7 +6,7 @@ class TagController {
 
     @Secured('permitAll')
     def index() {
-        def tags = Tag.list()
+        def tags = Tag.list() //Find all tags in DB to be displayed
         [tags:tags]
     }
 

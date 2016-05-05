@@ -40,13 +40,14 @@
             });
         </script>
 
-
+        <div class="row">
         <div class="col-md-8 col-xs-12">
             <p>${show.description}</p>
             <br>
             <p>
                 Tags: ${show.tags.name.join(", ")}
             </p>
+        </div>
         </div>
     </div>
 
