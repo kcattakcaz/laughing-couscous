@@ -189,7 +189,8 @@ class ShowController {
     def showDisplay(){
         def shows = Show.findById(params.id)
         def reviews = Review.findByShow(shows)
-        [shows:shows, reviews:reviews]
+        println(reviews)
+        [show:shows, reviews:reviews]
     }
 
     def addComment(){
@@ -200,9 +201,13 @@ class ShowController {
 
     def addReview(){
         def user = springSecurityService.getCurrentUser()
-        def shows = Show.findById(params.id)
-        def review = new Review(user,shows,params.text)
+        def shows = Show.findById(params.showID)
+        def review = new Review(user,shows,params.reviewText)
+        println(user.id)
+        println(shows.name)
+        println(params.reviewText)
         review.save()
+        println(review.errors.allErrors)
         redirect(uri: request.getHeader('referer'))
     }
 }

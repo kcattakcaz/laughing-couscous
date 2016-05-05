@@ -14,195 +14,70 @@
 </head>
 
 <body>
-<div class="container">
-    <g:if test="${shows}">
-        <g:each var="show" in="${shows}">
-            <div class="well well-lg">
-                <div class="row">
-                    <h2>${show.name} <small><g:formatDate format="yyyy" date="${show.start_year}"/> - <g:formatDate format="yyyy" date="${show.end_year}"/></small></h2>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-4">
-                        <div class="thumbnail">
-                            <img class="showImage" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
-                        </div>
-                    </div>
-
-                    <div class=" col-xs-12 rating align" data-toggle="tooltip" title="${user && Rating.findByShowAndUser(show, user) ? "Overall rating: " + show.rating + ", Your rating: " + Rating.findByShowAndUser(show, user).stars.toFloat() : show.rating ? "Overall rating: " + show.rating : "No current ratings"}">
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="1"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 1}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="2"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 2}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="3"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 3}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="4"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 4}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="5"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 5}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                    </div>
-
-                    <div class="col-xs-4">
-                        Number of Episodes: ${show.num_episodes}
-                    </div>
-
-                    <div class="col-xs-4">
-                        Description: ${show.description}
-                    </div>
-
-                    <div class="col-xs-4">
-                        Tags: ${show.tags.name.join(", ")}
-                    </div>
-
-                </div>
+<div class="container well well-lg">
+<g:if test="${show}">
+    <div class="row">
+        <h1>${show.name} <small><g:formatDate format="yyyy" date="${show.start_year}"/> - <g:formatDate format="yyyy" date="${show.end_year}"/></small></h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <img height="auto" class="media-object" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
+            <div id="ratings_${show.id}" class="star5">
+                <input <g:if test="${show.rating && show.rating >= 1}">checked</g:if> type="radio" name="example" class="rating" value="1" />
+                <input <g:if test="${show.rating && show.rating >= 2}">checked</g:if> type="radio" name="example" class="rating" value="2" />
+                <input <g:if test="${show.rating && show.rating >= 3}">checked</g:if> type="radio" name="example" class="rating" value="3" />
+                <input <g:if test="${show.rating && show.rating >= 4}">checked</g:if> type="radio" name="example" class="rating" value="4" />
+                <input <g:if test="${show.rating && show.rating >= 5}">checked</g:if> type="radio" name="example" class="rating" value="5" />
             </div>
-            <div class="well well-lg">
-                <g:form action="addReview">
-                    <g:hiddenField name="id" value="${show.id}"/>
-                    <g:hiddenField name="showName" value="${show.name}"/>
-                    <div class="form-group">
-                        <h3>Leave a Review</h3>
-                        <g:textArea class="reviewArea" name="text"/>
-                    </div>
-                    <g:submitButton name="Submit" class="submitButton btn"/>
-                </g:form>
-            </div>
-                <g:each var="reviews" in="${reviews}">
-                    <div class="well well-lg">
-                        <p> inside</p>
-                        <p>${reviews.text}</p>
-                    </div>
-                </g:each>
-        </g:each>
-    </g:if>
+        </div>
 
-    <g:elseif test="${tags}">
-        <g:each var="show" in="${tags}">
-            <div class="well well-lg">
-                <div class="row">
-                    <h2>${show.name} <small><g:formatDate format="yyyy" date="${show.start_year}"/> - <g:formatDate format="yyyy" date="${show.end_year}"/></small></h2>
-                </div>
+        <script>
+            $('#ratings_${show.id}').rating(function(vote, event){
+                // write your ajax code here
+                // For example;
+                console.log(vote);
+                $.post("<g:createLink action="rate" controller="show" />", {id: ${show.id}, star:vote});
+            });
+        </script>
 
-                <div class="row">
-                    <div class="col-xs-4">
-                        <div class="thumbnail">
-                            <img class="showImage" src="${createLink(controller:'show', action:'show_image', id: show.id)}" />
-                        </div>
-                    </div>
 
-                    <div class=" col-xs-12 rating align" data-toggle="tooltip" title="${user && Rating.findByShowAndUser(show, user) ? "Overall rating: " + show.rating + ", Your rating: " + Rating.findByShowAndUser(show, user).stars.toFloat() : show.rating ? "Overall rating: " + show.rating : "No current ratings"}">
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="1"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 1}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="2"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 2}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="3"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 3}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="4"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 4}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                        <g:form class="starForm starStyle" controller="show" action="rate">
-                            <g:hiddenField name="star" value="5"/>
-                            <g:hiddenField name="id" value="${show.id}"/>
-                            <g:if test="${show.rating && show.rating >= 5}">
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star"></span></button>
-                            </g:if>
-                            <g:else>
-                                <button class="star starbutton"><span class="glyphicon glyphicon-star-empty"></span></button>
-                            </g:else>
-                        </g:form>
-                    </div>
+        <div class="col-md-8 col-xs-12">
+            <p>${show.description}</p>
+            <br>
+            <p>
+                Tags: ${show.tags.name.join(", ")}
+            </p>
+        </div>
+    </div>
 
-                    <div class="col-xs-4">
-                        Number of Episodes: ${show.num_episodes}
-                    </div>
-
-                    <div class="col-xs-4">
-                        Description: ${show.description}
-                    </div>
-
-                    <div class="col-xs-4">
-                        Tags: ${show.tags.name.join(", ")}
-                    </div>
-
-                </div>
-            </div>
-        </g:each>
-    </g:elseif>
-    <g:else>
-        <p class="white">Not sure how you got here...</p><br/>
-    </g:else>
+</g:if>
 
 </div>
+<br>
+
+<div class="container">
+    <div class="row">
+        <g:form class="form" controller="Show" action="addReview">
+            <g:hiddenField name="showID" value="${show.id}"/>
+            <div class="form-group">
+                <label for="reviewText">Add your review:</label>
+                <g:textArea id="reviewText" name="reviewText" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <g:submitButton controller="Show" action="addReview" class="btn btn-primary" name="Review" />
+            </div>
+        </g:form>
+    </div>
+
+    <g:each in="${reviews}" var="review">
+        <div class="row well">
+            ${review.user.username}
+            ${review.text}
+        </div>
+    </g:each>
+</div>
+
 </body>
+
+
 </html>
