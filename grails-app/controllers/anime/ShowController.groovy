@@ -144,15 +144,11 @@ class ShowController {
             ilike('name', "%" + params.search + "%")
         }
 
-
         def searchTags = Show.withCriteria() {
-
             tags{
                 ilike('name', "%" + params.search + "%")
             }
         }
-
-
 
         //Remove duplicates
         def shows = []
@@ -194,6 +190,10 @@ class ShowController {
     }
 
     def addComment(){
+        def user = springSecurityService.getCurrentUser()
+        user.addPoints(5)
+        user.addComment()
+        user.save()
         def comment = new Comment(params)
         comment.save()
         redirect(action:"showDisplay")
@@ -201,6 +201,9 @@ class ShowController {
 
     def addReview(){
         def user = springSecurityService.getCurrentUser()
+        user.addPoints(10)
+        user.addReview()
+        user.save()
         def shows = Show.findById(params.showID)
         def review = new Review(user,shows,params.reviewText)
         println(user.id)

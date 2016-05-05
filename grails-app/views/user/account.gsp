@@ -17,15 +17,17 @@
 </head>
 
 <body>
-<div class="container white">
+<div class="container">
     <h3>Account</h3>
     <button class="tab active" id="profile">Profile</button>
     <button class="tab" id="favorites">Favorites</button>
 
     <div class="info info_profile">
         <div class="user_info">Username:</div> ${user.username}<br>
-
-        <div class="user_info">Email:</div> ${user.email}
+        <div class="user_info">Email:</div> ${user.email}<br>
+        <div class="user_info">Score:</div> ${user.score}<br>
+        <div class="user_info">Reviews:</div> ${user.num_reviews}<br>
+        <div class="user_info">Comments:</div> ${user.num_comments}
     </div>
 
     <div class="well well-lg info info_favorites">

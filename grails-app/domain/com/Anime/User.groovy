@@ -16,6 +16,9 @@ class User implements Serializable {
 	String username
 	String password
 	String email
+	Integer score
+	Integer num_reviews
+	Integer num_comments
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
@@ -26,17 +29,24 @@ class User implements Serializable {
 		this.username = username
 		this.password = password
 		this.email = email
+		this.score = 0
+		this.num_reviews = 0
+		this.num_comments = 0
 	}
 
-//	Set<Favorite> getFavorites() {
-//		//println this.favorites
-//		this.favorites
-//	}
+	def addPoints(Integer points) {
+		score += points
+	}
+
+	def addReview() {
+		num_reviews++
+	}
+	def addComment() {
+		num_comments++
+	}
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this)*.role
-		//println this
-		//println UserRole.findAllByUser(this)
 	}
 
 	def beforeInsert() {
