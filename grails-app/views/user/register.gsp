@@ -28,10 +28,17 @@
 <div class="container">
     <g:form action="createUser">
         <h1>Register</h1>
+        <g:hasErrors bean="${user}">
+            <ul>
+                <g:eachError var="err" bean="${user}">
+                    <li><g:message error="${err}"/></li>
+                </g:eachError>
+            </ul>
+        </g:hasErrors>
         <br>
-        <g:textField required placeholder="Username" name="name" /><br>
-        <g:textField required placeholder="Email" name="email" /><br>
-        <g:passwordField required placeholder="Password" name="password" /><br>
+        <g:textField required placeholder="Username" name="username" value="${fieldValue(bean: user, field: 'username')}"/><br>
+        <g:textField required placeholder="Email" name="email" value="${fieldValue(bean: user, field: 'email')}"/><br>
+        <g:passwordField required placeholder="Password" name="password" value="${fieldValue(bean: user, field: 'password')}"/><br>
         <g:submitButton name="submit" value="Submit" />
     </g:form>
 </div>

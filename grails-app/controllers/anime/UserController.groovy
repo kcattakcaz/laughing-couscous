@@ -15,10 +15,17 @@ class UserController {
 
     def createUser() {
         def userRole = Role.findByAuthority("ROLE_USER")
-        def user = new User(params.name, params.password, params.email).save(flush: true)
-        UserRole.create user, userRole, true
-        springSecurityService.reauthenticate(user.username, user.password)
-        redirect(controller: "show", action: "index")
+        def user = new User(params.username, params.password, params.email)
+        if (!user.save()) {
+            render(view: "register", model: [user: user])
+        }
+        else {
+            UserRole.create user, userRole, true
+            springSecurityService.reauthenticate(user.username, user.password)
+            redirect(controller: "show", action: "index")
+        }
+
+
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
