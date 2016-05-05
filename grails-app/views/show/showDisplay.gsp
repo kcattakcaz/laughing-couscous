@@ -5,7 +5,7 @@
   Time: 4:31 PM
 --%>
 
-<%@ page import="anime.Rating; anime.Favorite" contentType="text/html;charset=UTF-8" %>
+<%@ page import="anime.Rating; anime.Favorite; anime.Comment" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="${gspLayout ?: 'main'}"/>
@@ -72,8 +72,24 @@
 
     <g:each in="${reviews}" var="review">
         <div class="row well">
-            ${review.user.username}
-            ${review.text}
+            <h3>${review.user.username}</h3>
+            <div class="">
+                <p>${review.text}</p>
+            </div>
+            <div class="row well">
+                <g:each in="${comments}" var="comment">
+                    <g:form class="form" controller="Show" action="addComment">
+                        <g:hiddenField name="showID" value="${show.id}"/>
+                        <div class="form-group">
+                            <label for="commentText">Add your review:</label>
+                            <g:textArea id="commentText" name="commentText" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <g:submitButton controller="Show" action="addReview" class="btn btn-primary" name="Comment" />
+                        </div>
+                    </g:form>
+                </g:each>
+            </div>
         </div>
     </g:each>
 </div>

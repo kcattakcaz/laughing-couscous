@@ -4,7 +4,7 @@
 }
 
 .starStyle{
-    display:inline;
+    display:inline !important;
 }
 
 .searchbox{
